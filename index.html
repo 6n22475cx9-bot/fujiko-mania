@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藤子・F・不二雄マニア</title>
+    <style>
+        /* --- 基本設定：清潔感と読みやすさを重視 --- */
+        :root {
+            --primary-color: #0096D6; /* ドラえもんブルー風 */
+            --accent-color: #E3001B;  /* 赤 */
+            --bg-color: #F4F8FA;      /* 薄い青みがかった白 */
+            --text-color: #333333;
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* --- ヘッダー：シンプルに信頼感を --- */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        p.subtitle {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* --- メインコンテンツ --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- リンクカードのデザイン --- */
+        .link-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center; /* 上下中央揃え */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            border-left: 5px solid var(--primary-color); /* アクセント */
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 動画タイトルなどのテキスト部分 */
+        .card-text {
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .video-title {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 0;
+            color: #333;
+        }
+
+        /* ボタン部分 */
+        .btn-arrow {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* --- フッター --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        /* --- スマホ向け調整 --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.3rem; }
+            .item-name { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>藤子・F・不二雄マニア</h1>
+        <p class="subtitle">YouTubeで紹介したグッズ・書籍まとめ</p>
+    </header>
+
+    <div class="container">
+        <div id="links-container" class="link-list"></div>
+    </div>
+
+    <footer>
+        &copy; 藤子・F・不二雄マニア All Rights Reserved.
+    </footer>
+
+    <script>
+        // ==========================================
+        // ★ここにデータを追加していくだけでOKです★
+        // ==========================================
+        const links = [
+            // データの書き方: { video: "動画のタイトル(省略可)", name: "商品名", url: "アフィリエイトリンク" },
+            {
+                video: "【徹底解説】F先生の愛用したペンについて",
+                name: "カブラペン (タチカワ)",
+                url: "https://amazon.co.jp/..." // ここに実際のリンクを貼る
+            },
+            {
+                video: "2024年買ってよかったFグッズ",
+                name: "ドラえもん 原画集 Vol.1",
+                url: "https://amazon.co.jp/..."
+            },
+            {
+                video: "SF短編の傑作選を紹介",
+                name: "藤子・F・不二雄SF短編PERFECT版 (1)",
+                url: "https://amazon.co.jp/..."
+            },
+            {
+                video: "パーマンの魅力とは",
+                name: "パーマン (1) (てんとう虫コミックス)",
+                url: "#"
+            },
+            // ↓ 新しいリンクを追加するときは、ここをコピーして下に貼り付けてください
+            {
+                video: "動画タイトル",
+                name: "商品名",
+                url: "#"
+            },
+        ];
+
+        // データを元にHTMLを生成する処理（ここは触らなくてOK）
+        const container = document.getElementById('links-container');
+
+        links.forEach(item => {
+            // カードのHTMLを作成
+            const card = document.createElement('a');
+            card.className = 'link-card';
+            card.href = item.url;
+            card.target = '_blank'; // 別タブで開く
+            card.rel = 'noopener noreferrer'; // 安全対策
+
+            card.innerHTML = `
+                <div class="card-text">
+                    <span class="video-title">📺 ${item.video}</span>
+                    <h2 class="item-name">${item.name}</h2>
+                </div>
+                <div class="btn-arrow">→</div>
+            `;
+
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
