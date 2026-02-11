@@ -3,248 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>藤子・F・不二雄マニア</title>
+    <title>【名作】藤子・F・不二雄のSF短編について語るスレ【YouTube紹介】</title>
     <style>
-        /* --- 基本設定 --- */
-        :root {
-            --primary-color: #0096D6;
-            --accent-color: #E3001B;
-            --bg-color: #F4F8FA;
-            --text-color: #333333;
-            --card-bg: #FFFFFF;
-        }
-
+        /* --- 2ch風 基本設定 --- */
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: #EFEFEF;
+            color: #222;
+            font-family: "MS PGothic", "IPAMonaPGothic", "Mona", "HiraKakuProN-W3", sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
 
-        /* --- ヘッダー --- */
+        a {
+            color: #0000FF;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #660099;
+        }
+
+        /* --- ヘッダー（まとめブログ風） --- */
         header {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: #384F78; /* まとめサイトによくある濃い青 */
+            color: #FFF;
+            padding: 15px;
             text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 4px solid #1C2D4D;
         }
 
         h1 {
+            font-size: 1.4rem;
             margin: 0;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-
-        p.subtitle {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            opacity: 0.9;
+            line-height: 1.4;
         }
 
         /* --- メインコンテンツ --- */
         .container {
             max-width: 800px;
             margin: 0 auto;
+            background-color: #FFF;
             padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
-        /* --- リンクカードのデザイン --- */
-        .link-list {
-            display: grid;
-            gap: 15px;
-        }
-
-        .link-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            text-decoration: none;
-            color: inherit;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .link-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* --- 画像のデザイン（修正済み） --- */
-        .card-image {
-            width: 60px;        /* 画像の幅を固定 */
-            height: auto;       /* 高さは自動 */
-            margin-right: 15px; /* テキストとの隙間 */
-            border-radius: 4px; /* 角を少し丸く */
-            object-fit: contain; /* 画像が歪まないようにする */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* ほんのり影をつける */
-        }
-
-        /* --- テキスト部分 --- */
-        .card-text {
-            flex: 1;
-            padding-right: 15px;
-        }
-
-        .video-title {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 4px;
-            display: block;
-        }
-
-        .item-name {
-            font-size: 1.1rem;
+        /* --- スレタイ --- */
+        .thread-title {
+            color: #FF0000;
+            font-size: 1.5rem;
             font-weight: bold;
-            margin: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #CCC;
+        }
+
+        /* --- レス（書き込み） --- */
+        .res {
+            margin-bottom: 25px;
+            word-wrap: break-word;
+        }
+
+        .res-header {
+            font-size: 0.9rem;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .res-num { color: #000; font-weight: bold; }
+        .res-name { color: #228B22; font-weight: bold; } /* 緑色の名無しさん */
+        .res-date { color: #666; }
+        .res-id { color: #666; }
+
+        .res-body {
+            font-size: 1.1rem;
+            padding-left: 20px; /* インデント */
+            margin-top: 0;
+        }
+
+        /* --- アフィリエイトリンクの装飾 --- */
+        .affiliate-box {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #F9F9F9;
+            border: 2px solid #DDD;
+            display: flex;
+            align-items: flex-start;
+            text-decoration: none; /* リンクの下線を消す */
             color: #333;
         }
 
-        /* --- ボタン部分 --- */
-        .btn-arrow {
-            color: var(--primary-color);
+        .affiliate-box:hover {
+            background-color: #F0F8FF;
+            border-color: #99C2FF;
+        }
+
+        .item-image {
+            width: 100px;
+            height: auto;
+            margin-right: 15px;
+            border: 1px solid #CCC;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-title {
+            font-size: 1rem;
             font-weight: bold;
-            font-size: 1.2rem;
+            color: #0000FF;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .amazon-btn {
+            display: inline-block;
+            margin-top: 8px;
+            background: #FF9900;
+            color: #FFF;
+            padding: 5px 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 3px;
+            border: 1px solid #E47911;
+        }
+
+        .res-video-ref {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 5px;
         }
 
         /* --- フッター --- */
         footer {
             text-align: center;
-            padding: 40px 0;
-            color: #888;
+            padding: 20px;
             font-size: 0.8rem;
+            color: #666;
+            background-color: #EFEFEF;
         }
 
-        .disclaimer {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            max-width: 600px;
-            margin: 0 auto 10px;
-        }
-
-        /* --- スマホ向け調整 --- */
+        /* --- スマホ調整 --- */
         @media (max-width: 600px) {
-            h1 { font-size: 1.3rem; }
-            .item-name { font-size: 1rem; }
+            .container { padding: 10px; }
+            .res-body { padding-left: 5px; font-size: 1rem; }
+            .affiliate-box { flex-direction: column; align-items: center; text-align: center; }
+            .item-image { margin-right: 0; margin-bottom: 10px; width: 120px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>藤子・F・不二雄マニア</h1>
-        <p class="subtitle">YouTubeで紹介したグッズ・書籍まとめ</p>
+        <h1>藤子・F・不二雄マニア【まとめ】</h1>
     </header>
 
     <div class="container">
-        <div id="links-container" class="link-list"></div>
+        <div class="thread-title">
+            【神】藤子・F・不二雄のSF短編について語るスレ【YouTube紹介】
+        </div>
+
+        <div id="thread-container">
+            </div>
+
     </div>
 
     <footer>
-        <p class="disclaimer">
+        <p>
             当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
         </p>
         <p>&copy; 藤子・F・不二雄マニア All Rights Reserved.</p>
     </footer>
 
     <script>
+        // データ（元データと同じ）
         const links = [
             {
                 video: "SF短編シリーズ1",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 1　ミノタウロスの皿 (ビッグコミックススペシャル)",
-                url: "https://www.amazon.co.jp/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84SF%E7%9F%AD%E7%B7%A8%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%83%BB%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9-1-%E3%83%9F%E3%83%8E%E3%82%BF%E3%82%A6%E3%83%AD%E3%82%B9%E3%81%AE%E7%9A%BF-%E3%83%93%E3%83%83%E3%82%B0%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB-%E8%97%A4%E5%AD%90%E3%83%BB%EF%BC%A6%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84-ebook/dp/B0C13THNJ7/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=7I9J6B4W1WAQ&dib=eyJ2IjoiMSJ9.NYCG_fNwZyrHirx3vS3tEc95zz3H_WRrU5bkyNZW2SHvi-hLMyuhPUypV4F6m2NWTWtrPnsM_gpDy1uyxgHisKAM26GuIKijOb3jk2MMksIqgbMHySJFaGegCfCoGFSRuHKrtSrhiyoalpi4YvtNGUagUb5PW-Q_J_1hoOp5bSRn0VLIEHi2GsH2ljd4l_AfRiBSUqNekjHgjnqEM0ZcqBRzXaRoFmpj77vZzMw1oeLWyjtcZwCIhdI8a46kTb9I0T_EIaj7-ytiaL4KEpfBWUOvDq1yzIbS4r9YSXBihr8.C_zlN5f3wQlEloPi5kumh_42bOMf91VlPr4d3WnTOmA&dib_tag=se&keywords=sf%E7%9F%AD%E7%B7%A8&qid=1770620735&sprefix=sf%E7%9F%AD%E7%B7%A8%2Caps%2C191&sr=8-1",
-                image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg"
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 1　ミノタウロスの皿",
+                url: "https://www.amazon.co.jp/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84SF%E7%9F%AD%E7%B7%A8%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%83%BB%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9-1-%E3%83%9F%E3%83%8E%E3%82%BF%E3%82%A6%E3%83%AD%E3%82%B9%E3%81%AE%E7%9A%BF-%E3%83%93%E3%83%83%E3%82%B0%E3%82%B3%E3%83%9F%E3%83%83%E3%82%B0%E3%82%B9%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB-%E8%97%A4%E5%AD%90%E3%83%BB%EF%BC%A6%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84-ebook/dp/B0C13THNJ7/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=7I9J6B4W1WAQ&dib=eyJ2IjoiMSJ9.NYCG_fNwZyrHirx3vS3tEc95zz3H_WRrU5bkyNZW2SHvi-hLMyuhPUypV4F6m2NWTWtrPnsM_gpDy1uyxgHisKAM26GuIKijOb3jk2MMksIqgbMHySJFaGegCfCoGFSRuHKrtSrhiyoalpi4YvtNGUagUb5PW-Q_J_1hoOp5bSRn0VLIEHi2GsH2ljd4l_AfRiBSUqNekjHgjnqEM0ZcqBRzXaRoFmpj77vZzMw1oeLWyjtcZwCIhdI8a46kTb9I0T_EIaj7-ytiaL4KEpfBWUOvDq1yzIbS4r9YSXBihr8.C_zlN5f3wQlEloPi5kumh_42bOMf91VlPr4d3WnTOmA&dib_tag=se&keywords=sf%E7%9F%AD%E7%B7%A8&qid=1770620735&sprefix=sf%E7%9F%AD%E7%B7%A8%2Caps%2C191&sr=8-1",
+                image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg",
+                comment: "まずはこれ読め。ミノタウロスの皿はガチでトラウマになる。"
             },
             {
                 video: "SF短編シリーズ2",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 2　ノスタル爺 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 2　ノスタル爺",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-2-ノスタル爺-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13W56RX?ref_=saga_dp_ss_dsk_dp&qid=1770634098&sr=8-1",
-                image: "https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg",
+                comment: "抱けぇっ！これだけは絶対に読んでほしい傑作。"
             },
             {
                 video: "SF短編シリーズ3",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 3　カンビュセスの籤 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 3　カンビュセスの籤",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-3-カンビュセスの籤-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13XL6CN?ref_=saga_dp_ss_dsk_dp&qid=1770634098&sr=8-1",
-                image: "https://m.media-amazon.com/images/I/61i4dLiHFYL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61i4dLiHFYL._SL1500_.jpg",
+                comment: "絶望感がすごい。F先生のダークサイド全開。"
             },
             {
                 video: "SF短編シリーズ4",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 4　パラレル同窓会 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 4　パラレル同窓会",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-4-パラレル同窓会-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13Y1L3W?ref_=saga_dp_ss_dsk_dp&qid=1770634098&sr=8-1",
-                image: "https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg",
+                comment: "不思議な読後感。パラレルワールドものが好きならコレ。"
             },
             {
                 video: "SF短編シリーズ5",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 5　夢カメラ (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 5　夢カメラ",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-5-夢カメラ-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13WNK6X?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg",
+                comment: "ヨドバや夢カメラなど、不思議道具系が好きならこれ一択。"
             },
             {
                 video: "SF短編シリーズ6",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 6　異人アンドロ氏 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 6　異人アンドロ氏",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-6-異人アンドロ氏-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13VP8BW?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg",
+                comment: "少し切ない話も多い。表紙のアンドロ氏がいい味出してる。"
             },
             {
                 video: "SF短編シリーズ7",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 7　ポストの中の明日 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 7　ポストの中の明日",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-7-ポストの中の明日-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13WPVY4?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg"
+                image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg",
+                comment: "未来予知系の傑作揃い。読み応えありすぎワロタ。"
             },
             {
                 video: "SF短編シリーズ8",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 8　流血鬼 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 8　流血鬼",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-8-流血鬼-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13VXGY2?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg",
+                comment: "「流血鬼」は今の時代こそ読むべき。価値観がひっくり返るぞ。"
             },
             {
                 video: "SF短編シリーズ9",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 9　宇宙船製造法 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 9　宇宙船製造法",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-9-宇宙船製造法-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13VG3CQ?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg",
+                comment: "極限状態の人間ドラマ。これが少年誌に載ってたとか信じられん。"
             },
             {
                 video: "SF短編シリーズ10",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 10　征地球論 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 10　征地球論",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-10-征地球論-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13W74YH?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg",
+                comment: "宇宙人視点の話が面白い。ラストの巻に相応しい内容。"
             },
             {
                 video: "SF短編シリーズセット",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 全巻セット",
                 url: "https://www.amazon.co.jp/dp/B0C4YRVRN3?binding=kindle_edition&ref_=saga_dp_ss_dsk_sdp&qid=1770645022&sr=1-1",
-                image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png"
+                image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png",
+                comment: "面倒なら全巻セット買っとけ。一生モノの蔵書になるぞ。"
             }
         ];
 
-        const container = document.getElementById('links-container');
+        // ランダムなIDを生成する関数
+        function generateID() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let id = "";
+            for (let i = 0; i < 9; i++) {
+                id += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return "ID:" + id;
+        }
 
+        // 現在の日時を取得する関数
+        function getCurrentDate() {
+            const now = new Date();
+            const y = now.getFullYear();
+            const m = ("0" + (now.getMonth() + 1)).slice(-2);
+            const d = ("0" + now.getDate()).slice(-2);
+            const w = ["日", "月", "火", "水", "木", "金", "土"][now.getDay()];
+            const h = ("0" + now.getHours()).slice(-2);
+            const min = ("0" + now.getMinutes()).slice(-2);
+            const s = ("0" + now.getSeconds()).slice(-2);
+            return `${y}/${m}/${d}(${w}) ${h}:${min}:${s}`;
+        }
+
+        const container = document.getElementById('thread-container');
+        let resCount = 1;
+
+        // >>1 (イッチ) の書き込み
+        const opRes = document.createElement('div');
+        opRes.className = 'res';
+        opRes.innerHTML = `
+            <div class="res-header">
+                <span class="res-num">${resCount}</span> ：<span class="res-name">名無しさん＠お腹いっぱい。</span>：<span class="res-date">${getCurrentDate()}</span> <span class="res-id">${generateID()}</span>
+            </div>
+            <div class="res-body">
+                YouTubeで紹介されてた藤子・F・不二雄のSF短編シリーズが気になってるんだが、どれから読めばいい？<br>
+                動画で紹介されてたやつまとめてみたから、お前らのおすすめ教えてくれ。<br>
+                <br>
+                マジで神作品多いらしいな。
+            </div>
+        `;
+        container.appendChild(opRes);
+        resCount++;
+
+        // 商品ごとの書き込み生成
         links.forEach(item => {
-            const card = document.createElement('a');
-            card.className = 'link-card';
-            card.href = item.url;
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
-
-            const videoHtml = item.video ? `<span class="video-title">📺 ${item.video}</span>` : '';
-            const imageHtml = item.image ? `<img src="${item.image}" alt="${item.name}" class="card-image">` : '';
-
-            card.innerHTML = `
-                ${imageHtml} 
-                <div class="card-text">
-                    ${videoHtml}
-                    <h2 class="item-name">${item.name}</h2>
+            const res = document.createElement('div');
+            res.className = 'res';
+            
+            // コメントがない場合はデフォルト文言を入れる（安全策）
+            const commentText = item.comment ? item.comment : "これ動画で見て気になってたやつだ。";
+            
+            res.innerHTML = `
+                <div class="res-header">
+                    <span class="res-num">${resCount}</span> ：<span class="res-name">名無しさん＠お腹いっぱい。</span>：<span class="res-date">${getCurrentDate()}</span> <span class="res-id">${generateID()}</span>
                 </div>
-                <div class="btn-arrow">→</div>
+                <div class="res-body">
+                    >>1<br>
+                    ${item.video ? `<span class="res-video-ref">（動画：${item.video} より）</span><br>` : ''}
+                    ${commentText}<br>
+                    <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="affiliate-box">
+                        ${item.image ? `<img src="${item.image}" alt="${item.name}" class="item-image">` : ''}
+                        <div class="item-info">
+                            <span class="item-title">${item.name}</span>
+                            <span class="amazon-btn">Amazonで見る</span>
+                        </div>
+                    </a>
+                </div>
             `;
-            container.appendChild(card);
+            container.appendChild(res);
+            resCount++;
         });
+
+        // 最後の締めレス
+        const endRes = document.createElement('div');
+        endRes.className = 'res';
+        endRes.innerHTML = `
+            <div class="res-header">
+                <span class="res-num">${resCount}</span> ：<span class="res-name">名無しさん＠お腹いっぱい。</span>：<span class="res-date">${getCurrentDate()}</span> <span class="res-id">${generateID()}</span>
+            </div>
+            <div class="res-body">
+                >>1<br>
+                乙。<br>
+                とりあえずミノタウロスとノスタル爺買っとけば間違いない。<br>
+                Kindleでまとめ買いしてくるわﾉｼ
+            </div>
+        `;
+        container.appendChild(endRes);
+
     </script>
 </body>
 </html>
