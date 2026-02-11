@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>藤子・F・不二雄マニア</title>
     <style>
-        /* --- 基本設定：清潔感と読みやすさを重視 --- */
+        /* --- 基本設定 --- */
         :root {
-            --primary-color: #0096D6; /* ドラえもんブルー風 */
-            --accent-color: #E3001B;  /* 赤 */
-            --bg-color: #F4F8FA;      /* 薄い青みがかった白 */
+            --primary-color: #0096D6;
+            --accent-color: #E3001B;
+            --bg-color: #F4F8FA;
             --text-color: #333333;
             --card-bg: #FFFFFF;
         }
@@ -23,7 +23,7 @@
             line-height: 1.6;
         }
 
-        /* --- ヘッダー：シンプルに信頼感を --- */
+        /* --- ヘッダー --- */
         header {
             background-color: var(--primary-color);
             color: white;
@@ -63,12 +63,12 @@
             border-radius: 12px;
             padding: 15px;
             display: flex;
-            align-items: center; /* 上下中央揃え */
+            align-items: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none;
             color: inherit;
-            border-left: 5px solid var(--primary-color); /* アクセント */
+            border-left: 5px solid var(--primary-color);
         }
 
         .link-card:hover {
@@ -76,7 +76,17 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* 動画タイトルなどのテキスト部分 */
+        /* --- 画像のデザイン（修正済み） --- */
+        .card-image {
+            width: 60px;        /* 画像の幅を固定 */
+            height: auto;       /* 高さは自動 */
+            margin-right: 15px; /* テキストとの隙間 */
+            border-radius: 4px; /* 角を少し丸く */
+            object-fit: contain; /* 画像が歪まないようにする */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* ほんのり影をつける */
+        }
+
+        /* --- テキスト部分 --- */
         .card-text {
             flex: 1;
             padding-right: 15px;
@@ -96,7 +106,7 @@
             color: #333;
         }
 
-        /* ボタン部分 */
+        /* --- ボタン部分 --- */
         .btn-arrow {
             color: var(--primary-color);
             font-weight: bold;
@@ -111,22 +121,18 @@
             font-size: 0.8rem;
         }
 
+        .disclaimer {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto 10px;
+        }
+
         /* --- スマホ向け調整 --- */
         @media (max-width: 600px) {
             h1 { font-size: 1.3rem; }
             .item-name { font-size: 1rem; }
         }
-    
-    .disclaimer { font-size: 0.7rem; opacity: 0.7; max-width: 600px; margin: 0 auto 10px; }
-　　 /* --- 追加するCSS --- */
-.card-image {
-    width: 60px;       /* 画像の幅を固定 */
-    height: auto;      /* 高さは自動 */
-    margin-right: 15px; /* テキストとの隙間 */
-    border-radius: 4px; /* 角を少し丸く */
-    object-fit: contain; /* 画像が歪まないようにする */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* ほんのり影をつける */
-}
     </style>
 </head>
 <body>
@@ -141,25 +147,18 @@
     </div>
 
     <footer>
-    
-        
         <p class="disclaimer">
             当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
         </p>
         <p>&copy; 藤子・F・不二雄マニア All Rights Reserved.</p>
-    
     </footer>
 
     <script>
-        // ==========================================
-        // ★ここにデータを追加していくだけでOKです★
-        // ==========================================
         const links = [
-            // データの書き方: { video: "動画のタイトル(省略可)", name: "商品名", url: "アフィリエイトリンク" },
             {
                 video: "SF短編シリーズ1",
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス 1　ミノタウロスの皿 (ビッグコミックススペシャル)",
-                url: "https://www.amazon.co.jp/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84SF%E7%9F%AD%E7%B7%A8%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%83%BB%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9-1-%E3%83%9F%E3%83%8E%E3%82%BF%E3%82%A6%E3%83%AD%E3%82%B9%E3%81%AE%E7%9A%BF-%E3%83%93%E3%83%83%E3%82%B0%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB-%E8%97%A4%E5%AD%90%E3%83%BB%EF%BC%A6%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84-ebook/dp/B0C13THNJ7/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=7I9J6B4W1WAQ&dib=eyJ2IjoiMSJ9.NYCG_fNwZyrHirx3vS3tEc95zz3H_WRrU5bkyNZW2SHvi-hLMyuhPUypV4F6m2NWTWtrPnsM_gpDy1uyxgHisKAM26GuIKijOb3jk2MMksIqgbMHySJFaGegCfCoGFSRuHKrtSrhiyoalpi4YvtNGUagUb5PW-Q_J_1hoOp5bSRn0VLIEHi2GsH2ljd4l_AfRiBSUqNekjHgjnqEM0ZcqBRzXaRoFmpj77vZzMw1oeLWyjtcZwCIhdI8a46kTb9I0T_EIaj7-ytiaL4KEpfBWUOvDq1yzIbS4r9YSXBihr8.C_zlN5f3wQlEloPi5kumh_42bOMf91VlPr4d3WnTOmA&dib_tag=se&keywords=sf%E7%9F%AD%E7%B7%A8&qid=1770620735&sprefix=sf%E7%9F%AD%E7%B7%A8%2Caps%2C191&sr=8-1",// ここに実際のリンクを貼る
+                url: "https://www.amazon.co.jp/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84SF%E7%9F%AD%E7%B7%A8%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%83%BB%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9-1-%E3%83%9F%E3%83%8E%E3%82%BF%E3%82%A6%E3%83%AD%E3%82%B9%E3%81%AE%E7%9A%BF-%E3%83%93%E3%83%83%E3%82%B0%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB-%E8%97%A4%E5%AD%90%E3%83%BB%EF%BC%A6%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84-ebook/dp/B0C13THNJ7/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=7I9J6B4W1WAQ&dib=eyJ2IjoiMSJ9.NYCG_fNwZyrHirx3vS3tEc95zz3H_WRrU5bkyNZW2SHvi-hLMyuhPUypV4F6m2NWTWtrPnsM_gpDy1uyxgHisKAM26GuIKijOb3jk2MMksIqgbMHySJFaGegCfCoGFSRuHKrtSrhiyoalpi4YvtNGUagUb5PW-Q_J_1hoOp5bSRn0VLIEHi2GsH2ljd4l_AfRiBSUqNekjHgjnqEM0ZcqBRzXaRoFmpj77vZzMw1oeLWyjtcZwCIhdI8a46kTb9I0T_EIaj7-ytiaL4KEpfBWUOvDq1yzIbS4r9YSXBihr8.C_zlN5f3wQlEloPi5kumh_42bOMf91VlPr4d3WnTOmA&dib_tag=se&keywords=sf%E7%9F%AD%E7%B7%A8&qid=1770620735&sprefix=sf%E7%9F%AD%E7%B7%A8%2Caps%2C191&sr=8-1",
                 image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg"
             },
             {
@@ -194,7 +193,6 @@
             },
             {
                 video: "SF短編シリーズ7",
-                video: "SF短編シリーズ7",
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス 7　ポストの中の明日 (ビッグコミックススペシャル)",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-7-ポストの中の明日-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13WPVY4?ref_=saga_dp_ss_dsk_dp",
                 image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg"
@@ -203,7 +201,7 @@
                 video: "SF短編シリーズ8",
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス 8　流血鬼 (ビッグコミックススペシャル)",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-8-流血鬼-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13VXGY2?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg" 
+                image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg"
             },
             {
                 video: "SF短編シリーズ9",
@@ -215,46 +213,38 @@
                 video: "SF短編シリーズ10",
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス 10　征地球論 (ビッグコミックススペシャル)",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-10-征地球論-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13W74YH?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg" 
+                image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg"
             },
             {
                 video: "SF短編シリーズセット",
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス",
                 url: "https://www.amazon.co.jp/dp/B0C4YRVRN3?binding=kindle_edition&ref_=saga_dp_ss_dsk_sdp&qid=1770645022&sr=1-1",
                 image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png"
-            },
-                
-            // ↓ 新しいリンクを追加するときは、ここをコピーして下に貼り付けてください
-            
+            }
         ];
-// データを元にHTMLを生成する処理
-const container = document.getElementById('links-container');
 
-links.forEach(item => {
-    const card = document.createElement('a');
-    card.className = 'link-card';
-    card.href = item.url;
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
+        const container = document.getElementById('links-container');
 
-    // ビデオタイトルがあれば表示
-    const videoHtml = item.video ? `<span class="video-title">📺 ${item.video}</span>` : '';
-    
-    // ★画像があれば表示するHTMLを作る（ここを追加・変更）
-    const imageHtml = item.image ? `<img src="${item.image}" alt="${item.name}" class="card-image">` : '';
+        links.forEach(item => {
+            const card = document.createElement('a');
+            card.className = 'link-card';
+            card.href = item.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
 
-    // ★配置を変更：左に画像、右にテキスト
-    card.innerHTML = `
-        ${imageHtml} 
-        <div class="card-text">
-            ${videoHtml}
-            <h2 class="item-name">${item.name}</h2>
-        </div>
-        <div class="btn-arrow">→</div>
-    `;
-    container.appendChild(card);
-});
-        
+            const videoHtml = item.video ? `<span class="video-title">📺 ${item.video}</span>` : '';
+            const imageHtml = item.image ? `<img src="${item.image}" alt="${item.name}" class="card-image">` : '';
+
+            card.innerHTML = `
+                ${imageHtml} 
+                <div class="card-text">
+                    ${videoHtml}
+                    <h2 class="item-name">${item.name}</h2>
+                </div>
+                <div class="btn-arrow">→</div>
+            `;
+            container.appendChild(card);
+        });
     </script>
 </body>
 </html>
