@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>藤子・F・不二雄マニア</title>
+    
+    <meta property="og:title" content="藤子・F・不二雄マニア" />
+    <meta property="og:description" content="YouTubeで紹介した藤子・F・不二雄作品のグッズや書籍をまとめたファンサイトです。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://6n22475cx9-bot.github.io/fujiko-mania/" />
+    <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <style>
         /* --- 基本設定 --- */
         :root {
@@ -23,7 +31,6 @@
             line-height: 1.6;
         }
 
-        /* --- ヘッダー --- */
         header {
             background-color: var(--primary-color);
             color: white;
@@ -32,43 +39,24 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
+        h1 { margin: 0; font-size: 1.5rem; font-weight: 700; }
+        p.subtitle { margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9; }
 
-        p.subtitle {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* --- メインコンテンツ --- */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* --- リンクカードのデザイン --- */
-        .link-list {
-            display: grid;
-            gap: 15px;
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .link-list { display: grid; gap: 15px; }
 
         .link-card {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 15px;
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* 上寄せに変更（コメントがあるため） */
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none;
             color: inherit;
             border-left: 5px solid var(--primary-color);
+            position: relative;
         }
 
         .link-card:hover {
@@ -76,62 +64,69 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* --- 画像のデザイン（修正済み） --- */
+        /* 画像 */
         .card-image {
-            width: 60px;        /* 画像の幅を固定 */
-            height: auto;       /* 高さは自動 */
-            margin-right: 15px; /* テキストとの隙間 */
-            border-radius: 4px; /* 角を少し丸く */
-            object-fit: contain; /* 画像が歪まないようにする */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* ほんのり影をつける */
+            width: 70px;
+            height: auto;
+            margin-right: 15px;
+            border-radius: 4px;
+            object-fit: contain;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-shrink: 0; /* 画像が潰れないようにする */
         }
 
-        /* --- テキスト部分 --- */
-        .card-text {
-            flex: 1;
-            padding-right: 15px;
+        /* テキストエリア */
+        .card-text { flex: 1; padding-right: 30px; }
+
+        .video-title { font-size: 0.8rem; color: #888; margin-bottom: 2px; display: block; }
+        .item-name { font-size: 1.1rem; font-weight: bold; margin: 0 0 5px 0; color: #333; line-height: 1.4; }
+
+        /* ★星評価のデザイン */
+        .star-rating {
+            color: #f39c12; /* オレンジ色 */
+            font-size: 1rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
 
-        .video-title {
+        /* ★ひとことコメントのデザイン */
+        .recommend-comment {
             font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 4px;
-            display: block;
+            color: #555;
+            background-color: #fff3cd; /* 薄い黄色 */
+            border: 1px solid #ffeeba;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 5px;
+            position: relative;
+        }
+        /* コメントの吹き出しのしっぽ（装飾） */
+        .recommend-comment::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            left: 15px;
+            border-width: 0 6px 6px 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffeeba transparent;
         }
 
-        .item-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin: 0;
-            color: #333;
-        }
-
-        /* --- ボタン部分 --- */
+        /* 矢印ボタン */
         .btn-arrow {
             color: var(--primary-color);
             font-weight: bold;
             font-size: 1.2rem;
+            align-self: center; /* 矢印だけ上下中央 */
         }
 
-        /* --- フッター --- */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #888;
-            font-size: 0.8rem;
-        }
+        footer { text-align: center; padding: 40px 0; color: #888; font-size: 0.8rem; }
+        .disclaimer { font-size: 0.7rem; opacity: 0.7; max-width: 600px; margin: 0 auto 10px; }
 
-        .disclaimer {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            max-width: 600px;
-            margin: 0 auto 10px;
-        }
-
-        /* --- スマホ向け調整 --- */
         @media (max-width: 600px) {
             h1 { font-size: 1.3rem; }
             .item-name { font-size: 1rem; }
+            .card-image { width: 60px; }
         }
     </style>
 </head>
@@ -154,72 +149,92 @@
     </footer>
 
     <script>
+        // ==========================================
+        // ★データ設定エリア★
+        // star: 星の数（1〜5）、comment: "コメント" を追加できます
+        // ==========================================
         const links = [
             {
                 video: "SF短編シリーズ1",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 1　ミノタウロスの皿 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 1　ミノタウロスの皿",
                 url: "https://www.amazon.co.jp/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84SF%E7%9F%AD%E7%B7%A8%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%83%BB%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9-1-%E3%83%9F%E3%83%8E%E3%82%BF%E3%82%A6%E3%83%AD%E3%82%B9%E3%81%AE%E7%9A%BF-%E3%83%93%E3%83%83%E3%82%B0%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB-%E8%97%A4%E5%AD%90%E3%83%BB%EF%BC%A6%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84-ebook/dp/B0C13THNJ7/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=7I9J6B4W1WAQ&dib=eyJ2IjoiMSJ9.NYCG_fNwZyrHirx3vS3tEc95zz3H_WRrU5bkyNZW2SHvi-hLMyuhPUypV4F6m2NWTWtrPnsM_gpDy1uyxgHisKAM26GuIKijOb3jk2MMksIqgbMHySJFaGegCfCoGFSRuHKrtSrhiyoalpi4YvtNGUagUb5PW-Q_J_1hoOp5bSRn0VLIEHi2GsH2ljd4l_AfRiBSUqNekjHgjnqEM0ZcqBRzXaRoFmpj77vZzMw1oeLWyjtcZwCIhdI8a46kTb9I0T_EIaj7-ytiaL4KEpfBWUOvDq1yzIbS4r9YSXBihr8.C_zlN5f3wQlEloPi5kumh_42bOMf91VlPr4d3WnTOmA&dib_tag=se&keywords=sf%E7%9F%AD%E7%B7%A8&qid=1770620735&sprefix=sf%E7%9F%AD%E7%B7%A8%2Caps%2C191&sr=8-1",
-                image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg",
+                star: 5,  // ★星5つ
+                comment: "最初の一冊は絶対にコレ！" // ★コメントあり
             },
             {
                 video: "SF短編シリーズ2",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 2　ノスタル爺 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 2　ノスタル爺",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-2-ノスタル爺-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13W56RX?ref_=saga_dp_ss_dsk_dp&qid=1770634098&sr=8-1",
-                image: "https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg",
+                star: 4,
+                comment: "ホラー好きにオススメ！"
             },
             {
                 video: "SF短編シリーズ3",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 3　カンビュセスの籤 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 3　カンビュセスの籤",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-3-カンビュセスの籤-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13XL6CN?ref_=saga_dp_ss_dsk_dp&qid=1770634098&sr=8-1",
-                image: "https://m.media-amazon.com/images/I/61i4dLiHFYL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61i4dLiHFYL._SL1500_.jpg",
+                star: 3
             },
             {
                 video: "SF短編シリーズ4",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 4　パラレル同窓会 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 4　パラレル同窓会",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-4-パラレル同窓会-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13Y1L3W?ref_=saga_dp_ss_dsk_dp&qid=1770634098&sr=8-1",
-                image: "https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg",
+                star: 3
             },
             {
                 video: "SF短編シリーズ5",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 5　夢カメラ (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 5　夢カメラ",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-5-夢カメラ-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13WNK6X?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg",
+                star: 4,
+                comment: "衝撃的なラスト「ある日...」収録"
             },
             {
                 video: "SF短編シリーズ6",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 6　異人アンドロ氏 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 6　異人アンドロ氏",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-6-異人アンドロ氏-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13VP8BW?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg",
+                star: 5
             },
             {
                 video: "SF短編シリーズ7",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 7　ポストの中の明日 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 7　ポストの中の明日",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-7-ポストの中の明日-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13WPVY4?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg"
+                image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg",
+                star: 4
             },
             {
                 video: "SF短編シリーズ8",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 8　流血鬼 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 8　流血鬼",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-8-流血鬼-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13VXGY2?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg",
+                star: 4,
+                comment: "吸血鬼テーマの傑作。価値観が揺さぶられます。" // ★ここにもコメント
             },
             {
                 video: "SF短編シリーズ9",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 9　宇宙船製造法 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 9　宇宙船製造法",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-9-宇宙船製造法-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13VG3CQ?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg",
+                star: 5,
+                comment: "50年前にAIを先取りしていた⁉︎"
             },
             {
                 video: "SF短編シリーズ10",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 10　征地球論 (ビッグコミックススペシャル)",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス 10　征地球論",
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-10-征地球論-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13W74YH?ref_=saga_dp_ss_dsk_dp",
-                image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg"
+                image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg",
+                star: 4
             },
             {
                 video: "SF短編シリーズセット",
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス",
                 url: "https://www.amazon.co.jp/dp/B0C4YRVRN3?binding=kindle_edition&ref_=saga_dp_ss_dsk_sdp&qid=1770645022&sr=1-1",
-                image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png"
+                image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png",
+                star: 5
             }
         ];
 
@@ -232,14 +247,28 @@
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
 
+            // 各要素のHTML作成（存在する場合のみ作成）
             const videoHtml = item.video ? `<span class="video-title">📺 ${item.video}</span>` : '';
             const imageHtml = item.image ? `<img src="${item.image}" alt="${item.name}" class="card-image">` : '';
+            
+            // ★星を表示するロジック（starがある場合のみ）
+            let starHtml = '';
+            if (item.star) {
+                // ★の数だけ繰り返し、☆を(5-star)個つける
+                const stars = '★'.repeat(item.star) + '☆'.repeat(5 - item.star);
+                starHtml = `<div class="star-rating">${stars}</div>`;
+            }
+
+            // ★コメントを表示するロジック（commentがある場合のみ）
+            const commentHtml = item.comment ? `<div class="recommend-comment">${item.comment}</div>` : '';
 
             card.innerHTML = `
                 ${imageHtml} 
                 <div class="card-text">
                     ${videoHtml}
                     <h2 class="item-name">${item.name}</h2>
+                    ${starHtml}
+                    ${commentHtml}
                 </div>
                 <div class="btn-arrow">→</div>
             `;
