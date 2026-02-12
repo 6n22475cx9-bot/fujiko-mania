@@ -6,10 +6,12 @@
     <title>藤子・F・不二雄マニア</title>
     
     <meta property="og:title" content="藤子・F・不二雄マニア" />
-    <meta property="og:description" content="YouTubeで紹介した藤子・F・不二雄作品のグッズや書籍をまとめたファンサイトです。" />
+    <meta property="og:description" content="YouTubeで紹介したグッズ・書籍まとめサイト" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://6n22475cx9-bot.github.io/fujiko-mania/" />
+    
     <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.png" />
+    
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
@@ -19,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 基本設定（ライトモード） --- */
+        /* --- 基本設定 --- */
         :root {
             --primary-color: #0096D6;
             --accent-color: #E3001B;
@@ -29,15 +31,14 @@
             --card-shadow: rgba(0,0,0,0.05);
             --card-shadow-hover: rgba(0,0,0,0.12);
             --input-bg: #FFFFFF;
-            --header-text: #FFFFFF;
         }
 
-        /* ★改善点2: ダークモード対応 */
+        /* ダークモード対応 */
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-color: #121212;         /* 背景を黒く */
-                --text-color: #e0e0e0;       /* 文字を白く */
-                --card-bg: #1e1e1e;          /* カードをダークグレーに */
+                --bg-color: #121212;
+                --text-color: #e0e0e0;
+                --card-bg: #1e1e1e;
                 --card-shadow: rgba(0,0,0,0.3);
                 --card-shadow-hover: rgba(0,0,0,0.5);
                 --input-bg: #2d2d2d;
@@ -52,7 +53,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s; /* モード切替時にふわっと変わる */
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* --- ヘッダー --- */
@@ -60,7 +61,7 @@
             background-color: var(--primary-color);
             background-image: radial-gradient(rgba(255, 255, 255, 0.2) 3px, transparent 3px);
             background-size: 20px 20px;
-            color: var(--header-text);
+            color: #fff;
             text-align: center;
             padding: 3rem 1rem 5rem 1rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -84,7 +85,6 @@
         }
         .share-btn:hover { transform: scale(1.1); }
         .share-twitter { background-color: #000; }
-        /* ダークモード時のXアイコンの色調整 */
         @media (prefers-color-scheme: dark) { .share-twitter { background-color: #333; border: 1px solid #555; } }
         .share-line { background-color: #06C755; }
 
@@ -95,25 +95,36 @@
         }
         
         .search-container {
-            display: flex; gap: 10px;
-            background-color: var(--input-bg); padding: 10px;
+            display: flex; gap: 5px;
+            background-color: var(--input-bg); padding: 10px 15px;
             border-radius: 40px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             align-items: center;
         }
 
         .search-box {
-            flex: 1; padding: 10px 15px; border: none;
+            flex: 1; padding: 10px 5px; border: none;
             font-size: 1rem; outline: none; background: transparent;
             font-family: inherit; color: var(--text-color);
         }
-        .search-box::-webkit-search-cancel-button { cursor: pointer; }
+        /* ブラウザ標準の×ボタンは非表示にする（自作ボタンと重複するため） */
+        .search-box::-webkit-search-cancel-button { display: none; }
         
+        /* ★自作の×ボタンのデザイン */
+        .clear-btn {
+            cursor: pointer; color: #999; font-size: 1.2rem;
+            width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; transition: background 0.2s;
+            visibility: hidden; /* 最初は隠す */
+        }
+        .clear-btn:hover { background-color: rgba(0,0,0,0.05); color: #666; }
+        .clear-btn.visible { visibility: visible; } /* 文字が入ったら表示 */
+
         .sort-select {
-            padding: 10px 20px; border-radius: 30px; border: 1px solid #eee;
+            padding: 10px 15px; border-radius: 30px; border: 1px solid #eee;
             font-size: 0.9rem; background: var(--bg-color); color: var(--text-color); cursor: pointer;
             outline: none; font-weight: bold; font-family: inherit;
-            border: 1px solid rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.1); margin-left: 5px;
         }
 
         .result-count {
@@ -148,7 +159,6 @@
             padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px;
             line-height: 1; border: 1px solid rgba(0,0,0,0.1);
         }
-        /* ダークモード時のタグ調整 */
         @media (prefers-color-scheme: dark) { .category-tag { background-color: #333; border-color: #444; } }
 
         .star-rating { color: #f39c12; font-size: 1.3rem; margin-bottom: 8px; letter-spacing: 2px; font-weight: bold; }
@@ -188,8 +198,10 @@
             .item-name { font-size: 1rem; }
             .card-image { width: 65px; margin-right: 15px; }
             .link-card { padding: 15px; }
-            .search-container { flex-direction: column; padding: 15px; border-radius: 20px;}
-            .sort-select { width: 100%; margin-top: 5px; }
+            .search-container { flex-direction: row; padding: 10px; flex-wrap: wrap;}
+            .search-box { width: 100%; order: 1; }
+            .clear-btn { order: 2; }
+            .sort-select { width: 100%; margin-top: 10px; order: 3; margin-left: 0; }
         }
     </style>
 </head>
@@ -211,7 +223,9 @@
 
     <div class="control-area">
         <div class="search-container">
-            <input type="search" id="searchInput" class="search-box" placeholder="キーワード検索 (例: SF, 怖い...)">
+            <input type="text" id="searchInput" class="search-box" placeholder="キーワード検索 (例: SF, 怖い...)">
+            <div id="clearBtn" class="clear-btn">✕</div>
+            
             <select id="sortSelect" class="sort-select">
                 <option value="default">シリーズ順</option>
                 <option value="star_desc">評価が高い順</option>
@@ -323,6 +337,7 @@
 
         const container = document.getElementById('links-container');
         const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearBtn');
         const sortSelect = document.getElementById('sortSelect');
         const resultCount = document.getElementById('resultCount');
         const noResult = document.getElementById('noResult');
@@ -332,6 +347,13 @@
         function updateList() {
             const keyword = searchInput.value.toLowerCase();
             const sortType = sortSelect.value;
+
+            // ×ボタンの表示制御
+            if (keyword.length > 0) {
+                clearBtn.classList.add('visible');
+            } else {
+                clearBtn.classList.remove('visible');
+            }
 
             let filtered = links.filter(item => {
                 const matchKeyword = 
@@ -399,6 +421,13 @@
                 container.appendChild(card);
             });
         }
+
+        // ×ボタンクリックで文字を消す
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+            searchInput.focus();
+        });
 
         searchInput.addEventListener('input', updateList);
         sortSelect.addEventListener('change', updateList);
