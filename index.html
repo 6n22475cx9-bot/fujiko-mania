@@ -10,7 +10,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://6n22475cx9-bot.github.io/fujiko-mania/" />
     
-    <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.png" />
+    <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/IMG_4525.jpeg" />
     
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -25,15 +25,16 @@
         :root {
             --primary-color: #0096D6;
             --accent-color: #E3001B;
+            --ribbon-color: #ffaa00; /* リボンの色 */
             --bg-color: #F4F8FA;
             --text-color: #333333;
             --card-bg: #FFFFFF;
             --card-shadow: rgba(0,0,0,0.05);
             --card-shadow-hover: rgba(0,0,0,0.12);
             --input-bg: #FFFFFF;
+            --modal-bg: #FFFFFF;
         }
 
-        /* ダークモード対応 */
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #121212;
@@ -42,6 +43,7 @@
                 --card-shadow: rgba(0,0,0,0.3);
                 --card-shadow-hover: rgba(0,0,0,0.5);
                 --input-bg: #2d2d2d;
+                --modal-bg: #2d2d2d;
             }
         }
 
@@ -107,18 +109,15 @@
             font-size: 1rem; outline: none; background: transparent;
             font-family: inherit; color: var(--text-color);
         }
-        /* ブラウザ標準の×ボタンは非表示にする（自作ボタンと重複するため） */
         .search-box::-webkit-search-cancel-button { display: none; }
         
-        /* ★自作の×ボタンのデザイン */
         .clear-btn {
             cursor: pointer; color: #999; font-size: 1.2rem;
             width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; transition: background 0.2s;
-            visibility: hidden; /* 最初は隠す */
+            border-radius: 50%; transition: background 0.2s; visibility: hidden;
         }
         .clear-btn:hover { background-color: rgba(0,0,0,0.05); color: #666; }
-        .clear-btn.visible { visibility: visible; } /* 文字が入ったら表示 */
+        .clear-btn.visible { visibility: visible; }
 
         .sort-select {
             padding: 10px 15px; border-radius: 30px; border: 1px solid #eee;
@@ -148,6 +147,17 @@
 
         .link-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px var(--card-shadow-hover); }
         .link-card:active { transform: translateY(0) scale(0.99); opacity: 0.9; }
+
+        /* ★リボン（イチオシ表示） */
+        .ribbon {
+            position: absolute; top: 0; right: 0;
+            background-color: var(--ribbon-color); color: white;
+            font-size: 0.7rem; font-weight: bold; padding: 5px 30px;
+            transform: translate(30%, 40%) rotate(45deg); /* 右上に斜めに配置 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 2; text-align: center; width: 100px;
+            pointer-events: none;
+        }
 
         .card-image { width: 80px; height: auto; margin-right: 20px; border-radius: 6px; object-fit: contain; box-shadow: 0 2px 5px rgba(0,0,0,0.1); background-color: #fff; }
         .card-text { flex: 1; padding-right: 30px; }
@@ -192,6 +202,29 @@
             font-size: 0.8rem; background-color: rgba(0,0,0,0.03); margin-top: 40px; 
         }
         .disclaimer { font-size: 0.7rem; opacity: 0.7; max-width: 600px; margin: 0 auto 10px; padding: 0 20px;}
+        .privacy-link { color: inherit; text-decoration: underline; cursor: pointer; }
+
+        /* ★プライバシーポリシーモーダル */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5); z-index: 1000;
+            display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        
+        .modal-content {
+            background-color: var(--modal-bg); color: var(--text-color);
+            padding: 30px; border-radius: 15px; max-width: 90%; width: 500px;
+            max-height: 80vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem;
+            cursor: pointer; color: #999;
+        }
+        .modal-title { font-weight: bold; margin-bottom: 15px; font-size: 1.2rem; }
+        .modal-body { font-size: 0.85rem; line-height: 1.8; text-align: left; }
 
         @media (max-width: 600px) {
             h1 { font-size: 1.4rem; }
@@ -225,7 +258,6 @@
         <div class="search-container">
             <input type="text" id="searchInput" class="search-box" placeholder="キーワード検索 (例: SF, 怖い...)">
             <div id="clearBtn" class="clear-btn">✕</div>
-            
             <select id="sortSelect" class="sort-select">
                 <option value="default">シリーズ順</option>
                 <option value="star_desc">評価が高い順</option>
@@ -244,10 +276,28 @@
 
     <footer>
         <p class="disclaimer">
-            当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
+            当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。<br>
+            <span id="openPrivacy" class="privacy-link">プライバシーポリシー</span>
         </p>
         <p>&copy; <span id="currentYear"></span> 藤子・F・不二雄マニア All Rights Reserved.</p>
     </footer>
+
+    <div id="privacyModal" class="modal-overlay">
+        <div class="modal-content">
+            <div id="closePrivacy" class="modal-close">✕</div>
+            <div class="modal-title">プライバシーポリシー</div>
+            <div class="modal-body">
+                <p><strong>1. 個人情報の利用目的</strong><br>
+                当サイトでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。</p>
+                <br>
+                <p><strong>2. 広告について</strong><br>
+                当サイトでは、第三者配信の広告サービス（Amazonアソシエイト等）を利用しており、ユーザーの興味に応じた商品やサービスの広告を表示するため、クッキー（Cookie）を使用しております。クッキーを使用することで当サイトはお客様のコンピュータを識別できるようになりますが、お客様個人を特定できるものではありません。</p>
+                <br>
+                <p><strong>3. 免責事項</strong><br>
+                当サイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。また当サイトのコンテンツ・情報について、できる限り正確な情報を提供するように努めておりますが、正確性や安全性を保証するものではありません。</p>
+            </div>
+        </div>
+    </div>
 
     <script>
         const links = [
@@ -257,7 +307,8 @@
                 url: "https://www.amazon.co.jp/dp/B0C13THNJ7",
                 image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg",
                 star: 5,
-                comment: "最初の一冊は絶対にコレ！"
+                comment: "最初の一冊は絶対にコレ！",
+                ribbon: "イチオシ" // ★ここにリボン文字を設定
             },
             {
                 video: "シリーズ2",
@@ -331,7 +382,8 @@
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス",
                 url: "https://www.amazon.co.jp/dp/B0C4YRVRN3",
                 image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png",
-                star: 5
+                star: 5,
+                ribbon: "完結セット" // ★セット商品にもリボン
             }
         ];
 
@@ -348,7 +400,6 @@
             const keyword = searchInput.value.toLowerCase();
             const sortType = sortSelect.value;
 
-            // ×ボタンの表示制御
             if (keyword.length > 0) {
                 clearBtn.classList.add('visible');
             } else {
@@ -359,7 +410,8 @@
                 const matchKeyword = 
                     item.name.toLowerCase().includes(keyword) ||
                     (item.video && item.video.toLowerCase().includes(keyword)) ||
-                    (item.comment && item.comment.toLowerCase().includes(keyword));
+                    (item.comment && item.comment.toLowerCase().includes(keyword)) ||
+                    (item.ribbon && item.ribbon.toLowerCase().includes(keyword));
                 return matchKeyword;
             });
 
@@ -407,8 +459,12 @@
                     starHtml = `<div class="star-rating">${stars}</div>`;
                 }
                 const commentHtml = item.comment ? `<div class="recommend-comment">${item.comment}</div>` : '';
+                
+                // ★リボンの表示ロジック
+                const ribbonHtml = item.ribbon ? `<div class="ribbon">${item.ribbon}</div>` : '';
 
                 card.innerHTML = `
+                    ${ribbonHtml}
                     ${imageHtml} 
                     <div class="card-text">
                         ${videoHtml}
@@ -422,11 +478,19 @@
             });
         }
 
-        // ×ボタンクリックで文字を消す
+        // ×ボタン
         clearBtn.addEventListener('click', () => {
             searchInput.value = '';
             updateList();
             searchInput.focus();
+        });
+
+        // プライバシーポリシーモーダルの制御
+        const modal = document.getElementById('privacyModal');
+        document.getElementById('openPrivacy').addEventListener('click', () => modal.classList.add('open'));
+        document.getElementById('closePrivacy').addEventListener('click', () => modal.classList.remove('open'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('open');
         });
 
         searchInput.addEventListener('input', updateList);
