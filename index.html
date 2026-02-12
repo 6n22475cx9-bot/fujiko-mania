@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-    body {
-        /* フォント指定を更新 */
-        font-family: "M PLUS Rounded 1c", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    }
-</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>藤子・F・不二雄マニア</title>
@@ -21,6 +11,10 @@
     <meta property="og:url" content="https://6n22475cx9-bot.github.io/fujiko-mania/" />
     <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.png" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         /* --- 基本設定 --- */
@@ -33,7 +27,8 @@
         }
 
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            /* ★ここで新しいフォントを指定します */
+            font-family: "M PLUS Rounded 1c", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -60,7 +55,7 @@
             border-radius: 12px;
             padding: 15px;
             display: flex;
-            align-items: flex-start; /* 上寄せに変更（コメントがあるため） */
+            align-items: flex-start;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none;
@@ -82,7 +77,7 @@
             border-radius: 4px;
             object-fit: contain;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            flex-shrink: 0; /* 画像が潰れないようにする */
+            flex-shrink: 0;
         }
 
         /* テキストエリア */
@@ -91,15 +86,14 @@
         .video-title { font-size: 0.8rem; color: #888; margin-bottom: 2px; display: block; }
         .item-name { font-size: 1.1rem; font-weight: bold; margin: 0 0 5px 0; color: #333; line-height: 1.4; }
 
-        /* ★星評価のデザイン */
-        
-   .star-rating {
-    color: #f39c12;       /* 星をオレンジ色にする */
-    font-size: 1.2rem;    /* 文字を少し大きく */
-    margin-bottom: 5px;
-    letter-spacing: 2px;  /* 星と星の間を少し空ける */
-    font-weight: bold;    /* くっきりさせる */
-}
+        /* ★星評価のデザイン（オレンジ色・くっきり版） */
+        .star-rating {
+            color: #f39c12;       /* 星をオレンジ色にする */
+            font-size: 1.2rem;    /* 文字を少し大きく */
+            margin-bottom: 5px;
+            letter-spacing: 2px;  /* 星と星の間を少し空ける */
+            font-weight: bold;    /* くっきりさせる */
+        }
 
         /* ★ひとことコメントのデザイン */
         .recommend-comment {
@@ -163,7 +157,6 @@
     <script>
         // ==========================================
         // ★データ設定エリア★
-        // star: 星の数（1〜5）、comment: "コメント" を追加できます
         // ==========================================
         const links = [
             {
@@ -171,8 +164,8 @@
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス 1　ミノタウロスの皿",
                 url: "https://www.amazon.co.jp/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84SF%E7%9F%AD%E7%B7%A8%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%83%BB%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9-1-%E3%83%9F%E3%83%8E%E3%82%BF%E3%82%A6%E3%83%AD%E3%82%B9%E3%81%AE%E7%9A%BF-%E3%83%93%E3%83%83%E3%82%B0%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB-%E8%97%A4%E5%AD%90%E3%83%BB%EF%BC%A6%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84-ebook/dp/B0C13THNJ7/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=7I9J6B4W1WAQ&dib=eyJ2IjoiMSJ9.NYCG_fNwZyrHirx3vS3tEc95zz3H_WRrU5bkyNZW2SHvi-hLMyuhPUypV4F6m2NWTWtrPnsM_gpDy1uyxgHisKAM26GuIKijOb3jk2MMksIqgbMHySJFaGegCfCoGFSRuHKrtSrhiyoalpi4YvtNGUagUb5PW-Q_J_1hoOp5bSRn0VLIEHi2GsH2ljd4l_AfRiBSUqNekjHgjnqEM0ZcqBRzXaRoFmpj77vZzMw1oeLWyjtcZwCIhdI8a46kTb9I0T_EIaj7-ytiaL4KEpfBWUOvDq1yzIbS4r9YSXBihr8.C_zlN5f3wQlEloPi5kumh_42bOMf91VlPr4d3WnTOmA&dib_tag=se&keywords=sf%E7%9F%AD%E7%B7%A8&qid=1770620735&sprefix=sf%E7%9F%AD%E7%B7%A8%2Caps%2C191&sr=8-1",
                 image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg",
-                star: 5,  // ★星5つ
-                comment: "最初の一冊は絶対にコレ！" // ★コメントあり
+                star: 5,
+                comment: "最初の一冊は絶対にコレ！"
             },
             {
                 video: "SF短編シリーズ2",
@@ -224,7 +217,7 @@
                 url: "https://www.amazon.co.jp/藤子・F・不二雄SF短編コンプリート・ワークス-8-流血鬼-ビッグコミックススペシャル-藤子・Ｆ・不二雄-ebook/dp/B0C13VXGY2?ref_=saga_dp_ss_dsk_dp",
                 image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg",
                 star: 4,
-                comment: "吸血鬼テーマの傑作。価値観が揺さぶられます。" // ★ここにもコメント
+                comment: "吸血鬼テーマの傑作。価値観が揺さぶられます。"
             },
             {
                 video: "SF短編シリーズ9",
@@ -259,21 +252,17 @@
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
 
-            // 各要素のHTML作成（存在する場合のみ作成）
             const videoHtml = item.video ? `<span class="video-title">📺 ${item.video}</span>` : '';
             const imageHtml = item.image 
-    ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy" width="70" height="100">` 
-    : '';
+                ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy" width="70" height="100">` 
+                : '';
             
-            // ★星を表示するロジック（starがある場合のみ）
             let starHtml = '';
             if (item.star) {
-                // ★の数だけ繰り返し、☆を(5-star)個つける
                 const stars = '★'.repeat(item.star) + '☆'.repeat(5 - item.star);
                 starHtml = `<div class="star-rating">${stars}</div>`;
             }
 
-            // ★コメントを表示するロジック（commentがある場合のみ）
             const commentHtml = item.comment ? `<div class="recommend-comment">${item.comment}</div>` : '';
 
             card.innerHTML = `
