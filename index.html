@@ -45,7 +45,7 @@
             background-size: 20px 20px;
             color: white;
             text-align: center;
-            padding: 3rem 1rem 5rem 1rem; /* コントロールエリア用に下を空ける */
+            padding: 3rem 1rem 5rem 1rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
@@ -69,25 +69,28 @@
         .share-twitter { background-color: #000; }
         .share-line { background-color: #06C755; }
 
-        /* --- コントロールエリア（検索・ソート） --- */
+        /* --- コントロールエリア --- */
         .control-area {
-            max-width: 800px; margin: -40px auto 20px auto; padding: 0 20px;
+            max-width: 800px; margin: -40px auto 10px auto; padding: 0 20px;
             position: relative; z-index: 10;
         }
         
         .search-container {
             display: flex; gap: 10px;
-            background-color: white;
-            padding: 10px;
+            background-color: white; padding: 10px;
             border-radius: 40px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            align-items: center;
         }
 
+        /* type="search" にするとスマホで「×」ボタンが出る */
         .search-box {
             flex: 1; padding: 10px 15px; border: none;
             font-size: 1rem; outline: none; background: transparent;
             font-family: inherit;
         }
+        /* Webkitブラウザで×ボタンのスタイル調整 */
+        .search-box::-webkit-search-cancel-button { cursor: pointer; }
         
         .sort-select {
             padding: 10px 20px; border-radius: 30px; border: 1px solid #eee;
@@ -95,8 +98,14 @@
             outline: none; font-weight: bold; font-family: inherit;
         }
 
+        /* 件数表示エリア */
+        .result-count {
+            text-align: right; font-size: 0.85rem; color: #666;
+            margin-bottom: 15px; padding-right: 10px; height: 20px; /* 高さ確保でガタつき防止 */
+        }
+
         /* --- リストエリア --- */
-        .container { max-width: 800px; margin: 0 auto; padding: 10px 20px 30px 20px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px 30px 20px; }
         .link-list { display: grid; gap: 20px; }
 
         .link-card {
@@ -130,7 +139,7 @@
         .btn-arrow { color: var(--primary-color); font-weight: bold; font-size: 1.5rem; align-self: center; transition: transform 0.2s ease; }
         .link-card:hover .btn-arrow { transform: translateX(6px); }
 
-        .no-result { text-align: center; color: #888; padding: 20px; display: none; }
+        .no-result { text-align: center; color: #888; padding: 20px; display: none; margin-top: 20px; }
 
         #scrollTopBtn {
             display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99;
@@ -149,7 +158,7 @@
             .item-name { font-size: 1rem; }
             .card-image { width: 65px; margin-right: 15px; }
             .link-card { padding: 15px; }
-            .search-container { flex-direction: column; padding: 15px; }
+            .search-container { flex-direction: column; padding: 15px; border-radius: 20px;}
             .sort-select { width: 100%; margin-top: 5px; }
         }
     </style>
@@ -172,13 +181,14 @@
 
     <div class="control-area">
         <div class="search-container">
-            <input type="text" id="searchInput" class="search-box" placeholder="キーワード検索 (例: SF, 怖い...)">
+            <input type="search" id="searchInput" class="search-box" placeholder="キーワード検索 (例: SF, 怖い...)">
             <select id="sortSelect" class="sort-select">
                 <option value="default">シリーズ順</option>
                 <option value="star_desc">評価が高い順</option>
                 <option value="star_asc">評価が低い順</option>
             </select>
         </div>
+        <div id="resultCount" class="result-count"></div>
     </div>
 
     <div class="container">
@@ -192,11 +202,11 @@
         <p class="disclaimer">
             当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
         </p>
-        <p>&copy; 藤子・F・不二雄マニア All Rights Reserved.</p>
+        <p>&copy; <span id="currentYear"></span> 藤子・F・不二雄マニア All Rights Reserved.</p>
     </footer>
 
     <script>
-        // ★データ（タグ情報は削除済み）
+        // ★データ
         const links = [
             {
                 video: "シリーズ1",
@@ -286,14 +296,18 @@
         const container = document.getElementById('links-container');
         const searchInput = document.getElementById('searchInput');
         const sortSelect = document.getElementById('sortSelect');
+        const resultCount = document.getElementById('resultCount');
         const noResult = document.getElementById('noResult');
         
+        // ★年号の自動設定
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         // ★リスト更新・描画関数
         function updateList() {
             const keyword = searchInput.value.toLowerCase();
             const sortType = sortSelect.value;
 
-            // 1. フィルタリング（キーワードのみ）
+            // 1. フィルタリング
             let filtered = links.filter(item => {
                 const matchKeyword = 
                     item.name.toLowerCase().includes(keyword) ||
@@ -308,8 +322,13 @@
             } else if (sortType === 'star_asc') {
                 filtered.sort((a, b) => a.star - b.star);
             }
-            // defaultの場合は元の順序（linksのindex順）だが、filteredは新しい配列なので
-            // キーワード検索のみの状態と同じになる（=意図通り）
+
+            // ★件数表示の更新
+            if (filtered.length === links.length) {
+                resultCount.textContent = `全${filtered.length}作品`;
+            } else {
+                resultCount.textContent = `検索結果: ${filtered.length}作品`;
+            }
 
             renderItems(filtered);
         }
@@ -330,12 +349,9 @@
                 card.target = '_blank';
                 card.rel = 'noopener noreferrer';
                 
-                // アニメーション遅延
                 card.style.animation = `fadeUp 0.5s ease forwards ${index * 0.05}s`;
 
-                // シリーズ名などのバッジ
                 const videoHtml = item.video ? `<span class="category-tag">${item.video}</span>` : '';
-
                 const imageHtml = item.image 
                     ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy">` 
                     : '';
@@ -365,8 +381,9 @@
         searchInput.addEventListener('input', updateList);
         sortSelect.addEventListener('change', updateList);
 
-        // 初回実行
         renderItems(links);
+        // 初回は件数を更新するために一度呼ぶ
+        updateList();
 
         // トップへ戻るボタン
         const scrollTopBtn = document.getElementById("scrollTopBtn");
