@@ -26,7 +26,11 @@
             --bg-color: #F4F8FA;
             --text-color: #333333;
             --card-bg: #FFFFFF;
-            --tag-color: #555555;     /* タグの色（グレー） */
+            --tag-color: #555555;     
+        }
+
+        html {
+            scroll-behavior: smooth; /* スムーズスクロール */
         }
 
         body {
@@ -38,43 +42,67 @@
             line-height: 1.6;
         }
 
-        /* --- ヘッダー（ドット柄） --- */
+        /* --- ヘッダー --- */
         header {
             background-color: var(--primary-color);
-            /* うっすら白いドット柄を描画 */
             background-image: radial-gradient(rgba(255, 255, 255, 0.2) 3px, transparent 3px);
             background-size: 20px 20px;
             color: white;
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 3rem 1rem 4rem 1rem; /* 下に余白を増やしてSNSボタンを入れる */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
         }
 
         h1 { margin: 0; font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; }
         p.subtitle { margin-top: 0.5rem; font-size: 0.95rem; opacity: 0.95; }
 
-        /* --- ★YouTubeボタン --- */
+        /* --- YouTubeボタン --- */
         .youtube-btn {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
             background-color: white;
-            color: var(--accent-color); /* 赤文字 */
-            padding: 8px 16px;
-            border-radius: 20px;
+            color: var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 1rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .youtube-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
         }
         .youtube-btn:active {
             transform: translateY(0);
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
+
+        /* --- SNSシェアボタン --- */
+        .share-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .share-btn:hover { transform: scale(1.1); }
+        .share-twitter { background-color: #000; /* X (Twitter) black */ }
+        .share-line { background-color: #06C755; /* LINE Green */ }
 
 
         /* --- コンテナとカード --- */
@@ -88,30 +116,23 @@
             display: flex;
             align-items: flex-start;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.1s; /* 背景色変化を追加 */
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.1s;
             text-decoration: none;
             color: inherit;
             border-left: 6px solid var(--primary-color);
             position: relative;
-            overflow: hidden; /* 角丸からはみ出ないように */
+            overflow: hidden;
         }
 
-        /* ホバー時のカードの動き（PC用） */
         .link-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
-
-        /* ★スマホでタップした時の動き（沈み込む） */
         .link-card:active {
-            transform: translateY(0) scale(0.99); /* 少し縮む */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            background-color: #f9fcfe; /* 背景色をわずかに変える */
+            transform: translateY(0) scale(0.99);
+            background-color: #f9fcfe;
         }
 
-
-        /* --- カード内の要素 --- */
-        
         /* 画像 */
         .card-image {
             width: 80px;
@@ -124,13 +145,11 @@
             background-color: #fff;
         }
 
-        /* テキストエリア */
         .card-text { flex: 1; padding-right: 30px; }
 
-        /* カテゴリタグ（旧YouTubeバッジ） */
         .category-tag {
-            background-color: #f0f0f0; /* 薄いグレー背景 */
-            color: #555;              /* 文字色 */
+            background-color: #f0f0f0;
+            color: #555;
             font-size: 0.75rem;
             font-weight: bold;
             padding: 3px 8px;
@@ -138,7 +157,7 @@
             display: inline-block;
             margin-bottom: 6px;
             line-height: 1;
-            border: 1px solid #ddd;   /* 枠線を少しつける */
+            border: 1px solid #ddd;
         }
 
         .item-name { 
@@ -149,7 +168,6 @@
             line-height: 1.4; 
         }
 
-        /* 星評価（オレンジ色・くっきり版） */
         .star-rating {
             color: #f39c12;       
             font-size: 1.3rem;    
@@ -158,11 +176,10 @@
             font-weight: bold;    
         }
 
-        /* ひとことコメント */
         .recommend-comment {
             font-size: 0.9rem;
             color: #555;
-            background-color: #fff3cd; /* 薄い黄色 */
+            background-color: #fff3cd;
             border: 1px solid #ffeeba;
             padding: 6px 12px;
             border-radius: 20px;
@@ -180,18 +197,39 @@
             border-color: transparent transparent #ffeeba transparent;
         }
 
-        /* 矢印ボタンとアニメーション */
         .btn-arrow {
             color: var(--primary-color);
             font-weight: bold;
             font-size: 1.5rem;
             align-self: center;
-            transition: transform 0.2s ease; /* アニメーションの設定 */
+            transition: transform 0.2s ease;
         }
+        .link-card:hover .btn-arrow { transform: translateX(6px); }
 
-        /* ホバー時に矢印が右に動く */
-        .link-card:hover .btn-arrow {
-            transform: translateX(6px);
+        /* --- トップへ戻るボタン --- */
+        #scrollTopBtn {
+            display: none; /* 初期状態は非表示 */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: opacity 0.3s, transform 0.3s;
+            align-items: center;
+            justify-content: center;
+        }
+        #scrollTopBtn:hover {
+            background-color: #007bb0;
+            transform: scale(1.1);
         }
 
         /* --- フッター --- */
@@ -200,41 +238,48 @@
             padding: 50px 0; 
             color: #888; 
             font-size: 0.8rem;
-            background-color: #eef4f8; /* 背景色を少し変える */
+            background-color: #eef4f8;
             margin-top: 40px;
         }
         .disclaimer { font-size: 0.7rem; opacity: 0.7; max-width: 600px; margin: 0 auto 10px; padding: 0 20px;}
 
-        /* --- スマホ対応 --- */
         @media (max-width: 600px) {
             h1 { font-size: 1.4rem; }
             .item-name { font-size: 1rem; }
             .card-image { width: 65px; margin-right: 15px; }
             .link-card { padding: 15px; }
             .container { padding: 20px 15px; }
+            #scrollTopBtn { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <header id="top">
         <h1>藤子・F・不二雄マニア</h1>
         <p class="subtitle">YouTubeで紹介したグッズ・書籍まとめ</p>
         
         <a href="https://youtube.com/channel/UCwDV6Arqndee5rRyDNZL6Tg?si=x2r1injfUvb5RZoS" target="_blank" class="youtube-btn">
             ▶ YouTubeを見る
         </a>
+
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=藤子・F・不二雄マニア%20-%20YouTube紹介グッズまとめ&url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-twitter" title="Xでシェア">𝕏</a>
+            <a href="https://social-plugins.line.me/lineit/share?url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-line" title="LINEで送る">L</a>
+        </div>
     </header>
 
     <div class="container">
         <div id="links-container" class="link-list"></div>
     </div>
 
+    <button id="scrollTopBtn" title="トップへ戻る">↑</button>
+
     <footer>
         <p class="disclaimer">
             当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
         </p>
-        <p>&copy; 藤子・F・不二雄マニア All Rights Reserved.</p>
+        <p>&copy; 2024 藤子・F・不二雄マニア All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -243,8 +288,6 @@
         // ==========================================
         const links = [
             {
-                // videoプロパティを「category」などの名前に変えてもいいですが、
-                // 修正の手間を減らすため今回はそのまま使います（表示のみ変更）
                 video: "SF短編シリーズ1",
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス 1　ミノタウロスの皿",
                 url: "https://www.amazon.co.jp/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84SF%E7%9F%AD%E7%B7%A8%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%83%BB%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9-1-%E3%83%9F%E3%83%8E%E3%82%BF%E3%82%A6%E3%83%AD%E3%82%B9%E3%81%AE%E7%9A%BF-%E3%83%93%E3%83%83%E3%82%B0%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB-%E8%97%A4%E5%AD%90%E3%83%BB%EF%BC%A6%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84-ebook/dp/B0C13THNJ7/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=7I9J6B4W1WAQ&dib=eyJ2IjoiMSJ9.NYCG_fNwZyrHirx3vS3tEc95zz3H_WRrU5bkyNZW2SHvi-hLMyuhPUypV4F6m2NWTWtrPnsM_gpDy1uyxgHisKAM26GuIKijOb3jk2MMksIqgbMHySJFaGegCfCoGFSRuHKrtSrhiyoalpi4YvtNGUagUb5PW-Q_J_1hoOp5bSRn0VLIEHi2GsH2ljd4l_AfRiBSUqNekjHgjnqEM0ZcqBRzXaRoFmpj77vZzMw1oeLWyjtcZwCIhdI8a46kTb9I0T_EIaj7-ytiaL4KEpfBWUOvDq1yzIbS4r9YSXBihr8.C_zlN5f3wQlEloPi5kumh_42bOMf91VlPr4d3WnTOmA&dib_tag=se&keywords=sf%E7%9F%AD%E7%B7%A8&qid=1770620735&sprefix=sf%E7%9F%AD%E7%B7%A8%2Caps%2C191&sr=8-1",
@@ -330,6 +373,7 @@
 
         const container = document.getElementById('links-container');
 
+        // カード生成処理
         links.forEach(item => {
             const card = document.createElement('a');
             card.className = 'link-card';
@@ -337,9 +381,7 @@
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
 
-            // バッジ形式からシンプルなタグ形式に変更（「▶」を削除、classを変更）
             const videoHtml = item.video ? `<span class="category-tag">${item.video}</span>` : '';
-            
             const imageHtml = item.image 
                 ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy">` 
                 : '';
@@ -363,6 +405,26 @@
                 <div class="btn-arrow">→</div>
             `;
             container.appendChild(card);
+        });
+
+        // --- トップへ戻るボタンの制御 ---
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        // スクロール検知
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.style.display = "flex"; // 300pxスクロールしたら表示
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+
+        // クリック時の動作
+        scrollTopBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         });
     </script>
 </body>
