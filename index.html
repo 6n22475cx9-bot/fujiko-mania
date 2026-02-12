@@ -19,15 +19,14 @@
     <style>
         /* --- 基本設定 --- */
         :root {
-            --primary-color: #0096D6;
-            --accent-color: #E3001B;
+            --primary-color: #0096D6; /* ドラえもんブルー */
+            --accent-color: #E3001B;  /* ドラえもんの鼻/尻尾の赤 */
             --bg-color: #F4F8FA;
             --text-color: #333333;
             --card-bg: #FFFFFF;
         }
 
         body {
-            /* ★ここで新しいフォントを指定します */
             font-family: "M PLUS Rounded 1c", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -36,78 +35,105 @@
             line-height: 1.6;
         }
 
+        /* --- ヘッダー（ドット柄） --- */
         header {
             background-color: var(--primary-color);
+            /* うっすら白いドット柄を描画 */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.2) 3px, transparent 3px);
+            background-size: 20px 20px;
             color: white;
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        h1 { margin: 0; font-size: 1.5rem; font-weight: 700; }
-        p.subtitle { margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9; }
+        h1 { margin: 0; font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; }
+        p.subtitle { margin-top: 0.5rem; font-size: 0.95rem; opacity: 0.95; }
 
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-        .link-list { display: grid; gap: 15px; }
+        /* --- コンテナとカード --- */
+        .container { max-width: 800px; margin: 0 auto; padding: 30px 20px; }
+        .link-list { display: grid; gap: 20px; }
 
         .link-card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 15px;
+            padding: 20px;
             display: flex;
             align-items: flex-start;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none;
             color: inherit;
-            border-left: 5px solid var(--primary-color);
+            border-left: 6px solid var(--primary-color);
             position: relative;
+            overflow: hidden; /* 角丸からはみ出ないように */
         }
 
+        /* ホバー時のカードの動き */
         .link-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
 
+        /* --- カード内の要素 --- */
+        
         /* 画像 */
         .card-image {
-            width: 70px;
+            width: 80px;
             height: auto;
-            margin-right: 15px;
-            border-radius: 4px;
+            margin-right: 20px;
+            border-radius: 6px;
             object-fit: contain;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             flex-shrink: 0;
+            background-color: #fff;
         }
 
         /* テキストエリア */
         .card-text { flex: 1; padding-right: 30px; }
 
-        .video-title { font-size: 0.8rem; color: #888; margin-bottom: 2px; display: block; }
-        .item-name { font-size: 1.1rem; font-weight: bold; margin: 0 0 5px 0; color: #333; line-height: 1.4; }
-
-        /* ★星評価のデザイン（オレンジ色・くっきり版） */
-        .star-rating {
-            color: #f39c12;       /* 星をオレンジ色にする */
-            font-size: 1.2rem;    /* 文字を少し大きく */
-            margin-bottom: 5px;
-            letter-spacing: 2px;  /* 星と星の間を少し空ける */
-            font-weight: bold;    /* くっきりさせる */
+        /* YouTubeバッジ */
+        .video-badge {
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 6px;
+            line-height: 1;
         }
 
-        /* ★ひとことコメントのデザイン */
+        .item-name { 
+            font-size: 1.15rem; 
+            font-weight: bold; 
+            margin: 0 0 8px 0; 
+            color: #333; 
+            line-height: 1.4; 
+        }
+
+        /* 星評価（オレンジ色・くっきり版） */
+        .star-rating {
+            color: #f39c12;       
+            font-size: 1.3rem;    
+            margin-bottom: 8px;
+            letter-spacing: 2px;  
+            font-weight: bold;    
+        }
+
+        /* ひとことコメント */
         .recommend-comment {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #555;
             background-color: #fff3cd; /* 薄い黄色 */
             border: 1px solid #ffeeba;
-            padding: 4px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
             display: inline-block;
             margin-top: 5px;
             position: relative;
         }
-        /* コメントの吹き出しのしっぽ（装飾） */
         .recommend-comment::before {
             content: "";
             position: absolute;
@@ -118,21 +144,38 @@
             border-color: transparent transparent #ffeeba transparent;
         }
 
-        /* 矢印ボタン */
+        /* 矢印ボタンとアニメーション */
         .btn-arrow {
             color: var(--primary-color);
             font-weight: bold;
-            font-size: 1.2rem;
-            align-self: center; /* 矢印だけ上下中央 */
+            font-size: 1.5rem;
+            align-self: center;
+            transition: transform 0.2s ease; /* アニメーションの設定 */
         }
 
-        footer { text-align: center; padding: 40px 0; color: #888; font-size: 0.8rem; }
-        .disclaimer { font-size: 0.7rem; opacity: 0.7; max-width: 600px; margin: 0 auto 10px; }
+        /* ホバー時に矢印が右に動く */
+        .link-card:hover .btn-arrow {
+            transform: translateX(6px);
+        }
 
+        /* --- フッター --- */
+        footer { 
+            text-align: center; 
+            padding: 50px 0; 
+            color: #888; 
+            font-size: 0.8rem;
+            background-color: #eef4f8; /* 背景色を少し変える */
+            margin-top: 40px;
+        }
+        .disclaimer { font-size: 0.7rem; opacity: 0.7; max-width: 600px; margin: 0 auto 10px; padding: 0 20px;}
+
+        /* --- スマホ対応 --- */
         @media (max-width: 600px) {
-            h1 { font-size: 1.3rem; }
+            h1 { font-size: 1.4rem; }
             .item-name { font-size: 1rem; }
-            .card-image { width: 60px; }
+            .card-image { width: 65px; margin-right: 15px; }
+            .link-card { padding: 15px; }
+            .container { padding: 20px 15px; }
         }
     </style>
 </head>
@@ -252,9 +295,11 @@
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
 
-            const videoHtml = item.video ? `<span class="video-title">📺 ${item.video}</span>` : '';
+            // バッジ形式に変更
+            const videoHtml = item.video ? `<span class="video-badge">▶ ${item.video}</span>` : '';
+            // 遅延読み込み (loading="lazy")
             const imageHtml = item.image 
-                ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy" width="70" height="100">` 
+                ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy">` 
                 : '';
             
             let starHtml = '';
