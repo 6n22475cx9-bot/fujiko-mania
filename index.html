@@ -12,6 +12,8 @@
     <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <link rel="icon" href="favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
@@ -51,6 +53,30 @@
         h1 { margin: 0; font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; }
         p.subtitle { margin-top: 0.5rem; font-size: 0.95rem; opacity: 0.95; }
 
+        /* --- ★YouTubeボタン --- */
+        .youtube-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: white;
+            color: var(--accent-color); /* 赤文字 */
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .youtube-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .youtube-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+
         /* --- コンテナとカード --- */
         .container { max-width: 800px; margin: 0 auto; padding: 30px 20px; }
         .link-list { display: grid; gap: 20px; }
@@ -62,7 +88,7 @@
             display: flex;
             align-items: flex-start;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.1s; /* 背景色変化を追加 */
             text-decoration: none;
             color: inherit;
             border-left: 6px solid var(--primary-color);
@@ -70,11 +96,19 @@
             overflow: hidden; /* 角丸からはみ出ないように */
         }
 
-        /* ホバー時のカードの動き */
+        /* ホバー時のカードの動き（PC用） */
         .link-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
+
+        /* ★スマホでタップした時の動き（沈み込む） */
+        .link-card:active {
+            transform: translateY(0) scale(0.99); /* 少し縮む */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #f9fcfe; /* 背景色をわずかに変える */
+        }
+
 
         /* --- カード内の要素 --- */
         
@@ -186,6 +220,10 @@
     <header>
         <h1>藤子・F・不二雄マニア</h1>
         <p class="subtitle">YouTubeで紹介したグッズ・書籍まとめ</p>
+        
+        <a href="https://www.youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="youtube-btn">
+            ▶ YouTubeを見る
+        </a>
     </header>
 
     <div class="container">
