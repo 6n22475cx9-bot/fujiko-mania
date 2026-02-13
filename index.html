@@ -81,17 +81,21 @@
         .youtube-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
 
         .share-buttons { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
+        
+        /* ★ここを修正：ボタンを角丸長方形に変更し、文字を見やすく */
         .share-btn {
-            display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
-            border-radius: 50%; color: white; text-decoration: none; font-size: 1.2rem;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 8px 16px; /* 文字数に合わせて横幅が伸びるように */
+            border-radius: 24px; /* 角丸 */
+            color: white; text-decoration: none;
+            font-size: 1rem; font-weight: bold; /* 文字を太くハッキリと */
             box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: transform 0.2s;
         }
-        .share-btn:hover { transform: scale(1.1); }
+        .share-btn:hover { transform: scale(1.05); }
+        
         .share-twitter { background-color: #000; }
         @media (prefers-color-scheme: dark) { .share-twitter { background-color: #333; border: 1px solid #555; } }
         .share-line { background-color: #06C755; }
-        /* LINEアイコンのサイズ調整 */
-        .share-line svg { width: 30px; height: 30px; }
 
         /* --- コントロールエリア --- */
         .control-area {
@@ -282,9 +286,7 @@
 
         <div class="share-buttons">
             <a href="https://twitter.com/intent/tweet?text=藤子・F・不二雄マニア&url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-twitter">𝕏</a>
-            <a href="https://social-plugins.line.me/lineit/share?url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-line">
-                <svg viewBox="0 0 64 64" fill="currentColor"><path d="M32,11.8c-12.9,0-23.4,8.8-23.4,19.7c0,6.1,3.4,11.5,8.7,15.1c0.7,0.5,1,1.3,0.8,2.2c-0.3,2.1-1,5.5-1.2,6.3c-0.2,0.8,0.3,1.6,1.1,1.5c0.5-0.1,0.9-0.2,1.4-0.4c3.7-1.5,7.6-3.4,9.8-4.6c0.7-0.4,1.5-0.6,2.4-0.6c0.2,0,0.4,0,0.6,0c13,0,23.4-8.8,23.4-19.7S44.9,11.8,32,11.8z M20,35.5h-4.6c-0.6,0-1.1-0.5-1.1-1.1V25c0-0.6,0.5-1.1,1.1-1.1h4.6c0.6,0,1.1,0.5,1.1,1.1s-0.5,1.1-1.1,1.1h-3.5v2.2h3.5c0.6,0,1.1,0.5,1.1,1.1C21.1,35,20.6,35.5,20,35.5z M25.8,35.5c-0.6,0-1.1-0.5-1.1-1.1V25c0-0.6,0.5-1.1,1.1-1.1c0.6,0,1.1,0.5,1.1,1.1v9.4C26.9,35,26.4,35.5,25.8,35.5z M37,35.5h-3.5v-9.4c0-0.6,0.5-1.1,1.1-1.1c0.6,0,1.1,0.5,1.1,1.1v7.2l3.9-7.9c0.1-0.3,0.4-0.5,0.7-0.5h1c0.6,0,1.1,0.5,1.1,1.1v9.4c0,0.6-0.5,1.1-1.1,1.1c-0.6,0-1.1-0.5-1.1-1.1v-6.8l-3.9,7.9C37.5,35.3,37.3,35.5,37,35.5z M47.2,35.5h-4.6c-0.6,0-1.1-0.5-1.1-1.1V25c0-0.6,0.5-1.1,1.1-1.1h4.6c0.6,0,1.1,0.5,1.1,1.1c0,0.6-0.5,1.1-1.1,1.1h-3.5v2.2h3.5c0.6,0,1.1,0.5,1.1,1.1c0,0.6-0.5,1.1-1.1,1.1h-3.5v3.4h3.5c0.6,0,1.1,0.5,1.1,1.1C48.3,35,47.8,35.5,47.2,35.5z"/></svg>
-            </a>
+            <a href="https://social-plugins.line.me/lineit/share?url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-line">LINE</a>
         </div>
     </header>
 
