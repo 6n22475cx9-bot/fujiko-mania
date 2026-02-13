@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://6n22475cx9-bot.github.io/fujiko-mania/" />
     
-    <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.jpg" />
+    <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.jpg.JPG" />
     
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -37,7 +37,6 @@
             --modal-bg: #FFFFFF;
         }
 
-        /* ダークモード対応 */
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #121212;
@@ -186,8 +185,17 @@
             border-style: solid; border-color: transparent transparent #ffeeba transparent; 
         }
         
-        .btn-arrow { color: var(--primary-color); font-weight: bold; font-size: 1.5rem; align-self: center; transition: transform 0.2s ease; }
-        .link-card:hover .btn-arrow { transform: translateX(6px); }
+        /* 外部リンクアイコン */
+        .btn-arrow-box {
+            color: var(--primary-color);
+            display: flex; align-items: center; justify-content: center;
+            align-self: center; transition: transform 0.2s ease;
+        }
+        .external-icon {
+            width: 20px; height: 20px;
+            fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .link-card:hover .btn-arrow-box { transform: translateX(5px) translateY(-5px); }
 
         .no-result { text-align: center; opacity: 0.6; padding: 20px; display: none; margin-top: 20px; }
 
@@ -294,15 +302,16 @@
                 当サイトでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。</p>
                 <br>
                 <p><strong>2. 広告について</strong><br>
-                当サイトでは、第三者配信の広告サービス（Amazonアソシエイト等）を利用しており、ユーザーの興味に応じた商品やサービスの広告を表示するため、クッキー（Cookie）を使用しております。クッキーを使用することで当サイトはお客様のコンピュータを識別できるようになりますが、お客様個人を特定できるものではありません。</p>
+                当サイトでは、第三者配信の広告サービス（Amazonアソシエイト等）を利用しており、ユーザーの興味に応じた商品やサービスの広告を表示するため、クッキー（Cookie）を使用しております。</p>
                 <br>
                 <p><strong>3. 免責事項</strong><br>
-                当サイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。また当サイトのコンテンツ・情報について、できる限り正確な情報を提供するように努めておりますが、正確性や安全性を保証するものではありません。</p>
+                当サイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。</p>
             </div>
         </div>
     </div>
 
     <script>
+        // データ（リスト）
         const links = [
             {
                 video: "シリーズ1",
@@ -453,6 +462,7 @@
 
                 const videoHtml = item.video ? `<span class="category-tag">${item.video}</span>` : '';
                 
+                // 画像処理（シンプル版に戻しました）
                 const imageHtml = item.image 
                     ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy">` 
                     : '';
@@ -474,7 +484,9 @@
                         ${starHtml}
                         ${commentHtml}
                     </div>
-                    <div class="btn-arrow">→</div>
+                    <div class="btn-arrow-box">
+                        <svg class="external-icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
                 `;
                 container.appendChild(card);
             });
@@ -486,6 +498,7 @@
             searchInput.focus();
         });
 
+        // モーダル制御
         const modal = document.getElementById('privacyModal');
         document.getElementById('openPrivacy').addEventListener('click', () => modal.classList.add('open'));
         document.getElementById('closePrivacy').addEventListener('click', () => modal.classList.remove('open'));
@@ -496,9 +509,11 @@
         searchInput.addEventListener('input', updateList);
         sortSelect.addEventListener('change', updateList);
 
+        // 初回描画
         renderItems(links);
         updateList();
 
+        // トップへ戻るボタン
         const scrollTopBtn = document.getElementById("scrollTopBtn");
         window.onscroll = function() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
