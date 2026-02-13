@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>藤子・F・不二雄マニア</title>
     
-    <meta name="description" content="YouTubeで紹介した藤子・F・不二雄作品（SF短編、ドラえもん等）のグッズや書籍をまとめたファンサイトです。おすすめの購入先やレビューを紹介しています。" />
+    <meta name="description" content="YouTubeで紹介した藤子・F・不二雄作品（SF短編、ドラえもん等）のグッズや書籍をまとめたファンサイトです。" />
 
     <meta property="og:title" content="藤子・F・不二雄マニア" />
     <meta property="og:description" content="YouTubeで紹介したグッズ・書籍まとめサイト" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://6n22475cx9-bot.github.io/fujiko-mania/" />
-    <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/IMG_4525.jpeg" />
+    
+    <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.jpg" />
+    
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔔</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +37,7 @@
             --modal-bg: #FFFFFF;
         }
 
+        /* ダークモード対応 */
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #121212;
@@ -148,7 +151,7 @@
         .link-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px var(--card-shadow-hover); }
         .link-card:active { transform: translateY(0) scale(0.99); opacity: 0.9; }
 
-        /* リボン（位置調整済み） */
+        /* リボン */
         .ribbon {
             position: absolute; top: 12px; right: -28px;
             background-color: var(--ribbon-color); color: white;
@@ -374,4 +377,139 @@
                 video: "シリーズ10",
                 name: "藤子・F・不二雄SF短編コンプリート・ワークス 10　征地球論",
                 url: "https://www.amazon.co.jp/dp/B0C13W74YH",
-                image: "https
+                image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg",
+                star: 4
+            },
+            {
+                video: "全巻セット",
+                name: "藤子・F・不二雄SF短編コンプリート・ワークス",
+                url: "https://www.amazon.co.jp/dp/B0C4YRVRN3",
+                image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png",
+                star: 5,
+                ribbon: "完結セット"
+            }
+        ];
+
+        const container = document.getElementById('links-container');
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearBtn');
+        const sortSelect = document.getElementById('sortSelect');
+        const resultCount = document.getElementById('resultCount');
+        const noResult = document.getElementById('noResult');
+        
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function updateList() {
+            const keyword = searchInput.value.toLowerCase();
+            const sortType = sortSelect.value;
+
+            if (keyword.length > 0) {
+                clearBtn.classList.add('visible');
+            } else {
+                clearBtn.classList.remove('visible');
+            }
+
+            let filtered = links.filter(item => {
+                const matchKeyword = 
+                    item.name.toLowerCase().includes(keyword) ||
+                    (item.video && item.video.toLowerCase().includes(keyword)) ||
+                    (item.comment && item.comment.toLowerCase().includes(keyword)) ||
+                    (item.ribbon && item.ribbon.toLowerCase().includes(keyword));
+                return matchKeyword;
+            });
+
+            if (sortType === 'star_desc') {
+                filtered.sort((a, b) => b.star - a.star);
+            } else if (sortType === 'star_asc') {
+                filtered.sort((a, b) => a.star - b.star);
+            }
+
+            if (filtered.length === links.length) {
+                resultCount.textContent = `全${filtered.length}作品`;
+            } else {
+                resultCount.textContent = `検索結果: ${filtered.length}作品`;
+            }
+
+            renderItems(filtered);
+        }
+
+        function renderItems(data) {
+            container.innerHTML = '';
+            
+            if (data.length === 0) {
+                noResult.style.display = 'block';
+                return;
+            }
+            noResult.style.display = 'none';
+
+            data.forEach((item, index) => {
+                const card = document.createElement('a');
+                card.className = 'link-card';
+                card.href = item.url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                
+                card.style.animation = `fadeUp 0.5s ease forwards ${index * 0.05}s`;
+
+                const videoHtml = item.video ? `<span class="category-tag">${item.video}</span>` : '';
+                
+                const imageHtml = item.image 
+                    ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy">` 
+                    : '';
+                
+                let starHtml = '';
+                if (item.star) {
+                    const stars = '★'.repeat(item.star) + '☆'.repeat(5 - item.star);
+                    starHtml = `<div class="star-rating">${stars}</div>`;
+                }
+                const commentHtml = item.comment ? `<div class="recommend-comment">${item.comment}</div>` : '';
+                const ribbonHtml = item.ribbon ? `<div class="ribbon">${item.ribbon}</div>` : '';
+
+                card.innerHTML = `
+                    ${ribbonHtml}
+                    ${imageHtml} 
+                    <div class="card-text">
+                        ${videoHtml}
+                        <h2 class="item-name">${item.name}</h2>
+                        ${starHtml}
+                        ${commentHtml}
+                    </div>
+                    <div class="btn-arrow">→</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+            searchInput.focus();
+        });
+
+        const modal = document.getElementById('privacyModal');
+        document.getElementById('openPrivacy').addEventListener('click', () => modal.classList.add('open'));
+        document.getElementById('closePrivacy').addEventListener('click', () => modal.classList.remove('open'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('open');
+        });
+
+        searchInput.addEventListener('input', updateList);
+        sortSelect.addEventListener('change', updateList);
+
+        renderItems(links);
+        updateList();
+
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.style.display = "flex";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+        scrollTopBtn.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+</html>
