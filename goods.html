@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>話題の便利アイテム図鑑</title>
+    
+    <meta name="description" content="YouTubeで紹介した無印良品、100均、ガジェットなど、話題の便利アイテムや面白グッズをまとめたサイトです。" />
+
+    <meta property="og:title" content="話題の便利アイテム図鑑" />
+    <meta property="og:description" content="YouTubeで紹介した話題のガジェット・便利グッズまとめサイト" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.github.io/trend-items/" />
+    <meta property="og:image" content="https://your-domain.github.io/trend-items/ogp_image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💡</text></svg>">
+    <link rel="apple-touch-icon" href="https://your-domain.github.io/trend-items/ogp_image.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 基本設定（モダンでシンプルな配色に変更） --- */
+        :root {
+            --primary-color: #4A5568; /* 落ち着いたスレートグレー */
+            --accent-color: #DD6B20; /* アクセントのオレンジ */
+            --ribbon-color: #E53E3E; /* リボン用の赤 */
+            --bg-color: #F7FAFC; /* 少し温かみのある白 */
+            --text-color: #2D3748;
+            --card-bg: #FFFFFF;
+            --card-shadow: rgba(0,0,0,0.06);
+            --card-shadow-hover: rgba(0,0,0,0.12);
+            --input-bg: #FFFFFF;
+            --modal-bg: #FFFFFF;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1A202C;
+                --text-color: #E2E8F0;
+                --card-bg: #2D3748;
+                --card-shadow: rgba(0,0,0,0.3);
+                --card-shadow-hover: rgba(0,0,0,0.5);
+                --input-bg: #4A5568;
+                --modal-bg: #2D3748;
+            }
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "M PLUS Rounded 1c", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            background-color: var(--primary-color);
+            /* シンプルなストライプ柄に少し変更 */
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 1rem 5rem 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 { margin: 0; font-size: 1.8rem; font-weight: 700; letter-spacing: 1.5px; }
+        p.subtitle { margin-top: 0.5rem; font-size: 0.95rem; opacity: 0.9; }
+
+        .youtube-btn {
+            display: inline-block; margin-top: 20px; background-color: white; color: var(--accent-color);
+            padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .youtube-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+
+        .share-buttons { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
+        
+        .share-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 8px 16px; border-radius: 24px;
+            color: white; text-decoration: none;
+            font-size: 0.9rem; font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: transform 0.2s;
+        }
+        .share-btn:hover { transform: scale(1.05); }
+        
+        .share-twitter { background-color: #000; }
+        @media (prefers-color-scheme: dark) { .share-twitter { background-color: #333; border: 1px solid #555; } }
+        .share-line { background-color: #06C755; }
+
+        /* --- コントロールエリア --- */
+        .control-area {
+            max-width: 800px; margin: -40px auto 10px auto; padding: 0 20px;
+            position: relative; z-index: 10;
+        }
+        
+        .search-container {
+            display: flex; gap: 5px;
+            background-color: var(--input-bg); padding: 10px 15px;
+            border-radius: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1; padding: 10px 5px; border: none;
+            font-size: 1rem; outline: none; background: transparent;
+            font-family: inherit; color: var(--text-color);
+        }
+        .search-box::-webkit-search-cancel-button { display: none; }
+        
+        .clear-btn {
+            cursor: pointer; color: #999; font-size: 1.2rem;
+            width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; transition: background 0.2s; visibility: hidden;
+        }
+        .clear-btn:hover { background-color: rgba(0,0,0,0.05); color: #666; }
+        .clear-btn.visible { visibility: visible; }
+
+        .sort-select {
+            padding: 10px 15px; border-radius: 30px; border: 1px solid #eee;
+            font-size: 0.9rem; background: var(--bg-color); color: var(--text-color); cursor: pointer;
+            outline: none; font-weight: bold; font-family: inherit;
+            border: 1px solid rgba(0,0,0,0.1); margin-left: 5px;
+        }
+
+        .result-count {
+            text-align: right; font-size: 0.85rem; opacity: 0.7;
+            margin-bottom: 15px; padding-right: 10px; height: 20px; margin-top: 10px;
+        }
+
+        /* --- リストエリア --- */
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px 30px 20px; min-height: 300px; }
+        .link-list { display: grid; gap: 20px; }
+
+        .link-card {
+            background: var(--card-bg); border-radius: 12px; padding: 20px;
+            display: flex; align-items: flex-start;
+            box-shadow: 0 4px 10px var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.1s;
+            text-decoration: none; color: inherit; 
+            border-left: 6px solid var(--primary-color);
+            position: relative; overflow: hidden; opacity: 0; transform: translateY(20px);
+        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        .link-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px var(--card-shadow-hover); }
+        .link-card:active { transform: translateY(0) scale(0.99); opacity: 0.9; }
+
+        /* リボン */
+        .ribbon {
+            position: absolute; top: 12px; right: -28px;
+            background-color: var(--ribbon-color); color: white;
+            font-size: 0.7rem; font-weight: bold; padding: 5px 0;
+            transform: rotate(45deg); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 2; text-align: center; width: 100px;
+            pointer-events: none;
+        }
+
+        .card-image { width: 80px; height: 80px; margin-right: 20px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); background-color: #fff; }
+        .card-text { flex: 1; padding-right: 30px; }
+
+        .item-name { font-size: 1.1rem; font-weight: bold; margin: 0 0 8px 0; color: var(--text-color); line-height: 1.4; }
+        
+        .category-tag {
+            background-color: rgba(0,0,0,0.05); color: inherit; opacity: 0.8; font-size: 0.75rem; font-weight: bold;
+            padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 8px;
+            line-height: 1; border: 1px solid rgba(0,0,0,0.08);
+        }
+        @media (prefers-color-scheme: dark) { .category-tag { background-color: #333; border-color: #444; } }
+
+        .star-rating { color: #F6AD55; font-size: 1.2rem; margin-bottom: 8px; letter-spacing: 2px; font-weight: bold; }
+        
+        .recommend-comment { 
+            font-size: 0.9rem; color: #4A5568; background-color: #EDF2F7; 
+            border: 1px solid #E2E8F0; padding: 8px 14px; border-radius: 12px; 
+            display: inline-block; margin-top: 5px; position: relative; 
+        }
+        @media (prefers-color-scheme: dark) { 
+            .recommend-comment { background-color: #4A5568; color: #E2E8F0; border-color: #2D3748; }
+            .recommend-comment::before { border-color: transparent transparent #4A5568 transparent !important; }
+        }
+        
+        .recommend-comment::before { 
+            content: ""; position: absolute; top: -6px; left: 15px; border-width: 0 6px 6px 6px; 
+            border-style: solid; border-color: transparent transparent #EDF2F7 transparent; 
+        }
+        
+        .btn-arrow-box {
+            color: var(--primary-color);
+            display: flex; align-items: center; justify-content: center;
+            align-self: center; transition: transform 0.2s ease;
+        }
+        .external-icon {
+            width: 20px; height: 20px;
+            fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .link-card:hover .btn-arrow-box { transform: translateX(5px) translateY(-5px); }
+
+        .no-result { text-align: center; opacity: 0.6; padding: 20px; display: none; margin-top: 20px; }
+        
+        .reset-btn {
+            background-color: var(--primary-color); color: white; border: none;
+            padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer;
+            margin-top: 10px; transition: background 0.2s;
+        }
+        .reset-btn:hover { background-color: #2D3748; }
+
+        /* ローディング */
+        .loader-container {
+            display: flex; justify-content: center; align-items: center;
+            height: 200px; width: 100%;
+        }
+        .loader {
+            width: 40px; height: 40px;
+            border: 4px solid rgba(74, 85, 104, 0.2);
+            border-left-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #scrollTopBtn {
+            display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99;
+            border: none; outline: none; background-color: var(--primary-color); color: white;
+            cursor: pointer; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: opacity 0.3s, transform 0.3s;
+            align-items: center; justify-content: center;
+        }
+        #scrollTopBtn:hover { background-color: #2D3748; transform: scale(1.1); }
+
+        footer { 
+            text-align: center; padding: 50px 0; color: var(--text-color); opacity: 0.7; 
+            font-size: 0.8rem; background-color: rgba(0,0,0,0.03); margin-top: 40px; 
+        }
+        .disclaimer { font-size: 0.7rem; opacity: 0.7; max-width: 600px; margin: 0 auto 10px; padding: 0 20px;}
+        .privacy-link { color: inherit; text-decoration: underline; cursor: pointer; }
+
+        /* モーダル */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5); z-index: 1000;
+            display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        
+        .modal-content {
+            background-color: var(--modal-bg); color: var(--text-color);
+            padding: 30px; border-radius: 15px; max-width: 90%; width: 500px;
+            max-height: 80vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem;
+            cursor: pointer; color: #999;
+        }
+        .modal-title { font-weight: bold; margin-bottom: 15px; font-size: 1.2rem; }
+        .modal-body { font-size: 0.85rem; line-height: 1.8; text-align: left; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.4rem; }
+            .item-name { font-size: 1rem; }
+            .card-image { width: 65px; height: 65px; margin-right: 15px; }
+            .link-card { padding: 15px; }
+            .search-container { flex-direction: row; padding: 10px; flex-wrap: wrap;}
+            .search-box { width: 100%; order: 1; }
+            .clear-btn { order: 2; }
+            .sort-select { width: 100%; margin-top: 10px; order: 3; margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="top">
+        <h1>話題の便利アイテム図鑑</h1>
+        <p class="subtitle">YouTubeで紹介した無印良品・100均・ガジェットまとめ</p>
+        
+        <a href="https://www.youtube.com/@YOUR_NEW_CHANNEL_ID" target="_blank" class="youtube-btn">
+            ▶ チャンネルを見る
+        </a>
+
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=話題の便利アイテム図鑑&url=https://your-domain.github.io/trend-items/" target="_blank" class="share-btn share-twitter">𝕏</a>
+            <a href="https://social-plugins.line.me/lineit/share?url=https://your-domain.github.io/trend-items/" target="_blank" class="share-btn share-line">LINE</a>
+        </div>
+    </header>
+
+    <div class="control-area">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-box" placeholder="キーワード検索 (例: 無印良品, ガジェット, 収納...)">
+            <div id="clearBtn" class="clear-btn">✕</div>
+            <select id="sortSelect" class="sort-select">
+                <option value="default">新着・おすすめ順</option>
+                <option value="star_desc">評価が高い順</option>
+                <option value="star_asc">評価が低い順</option>
+            </select>
+        </div>
+        <div id="resultCount" class="result-count"></div>
+    </div>
+
+    <div class="container">
+        <div id="loader" class="loader-container">
+            <div class="loader"></div>
+        </div>
+        
+        <div id="links-container" class="link-list"></div>
+        <div id="noResult" class="no-result">
+            <p>該当するアイテムが見つかりませんでした 😢</p>
+            <button id="resetSearchBtn" class="reset-btn">全件表示に戻す</button>
+        </div>
+    </div>
+
+    <button id="scrollTopBtn">↑</button>
+
+    <footer>
+        <p class="disclaimer">
+            当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。<br>
+            <span id="openPrivacy" class="privacy-link">プライバシーポリシー</span>
+        </p>
+        <p>&copy; <span id="currentYear"></span> 話題の便利アイテム図鑑 All Rights Reserved.</p>
+    </footer>
+
+    <div id="privacyModal" class="modal-overlay">
+        <div class="modal-content">
+            <div id="closePrivacy" class="modal-close">✕</div>
+            <div class="modal-title">プライバシーポリシー</div>
+            <div class="modal-body">
+                <p><strong>1. 個人情報の利用目的</strong><br>
+                当サイトでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。</p>
+                <br>
+                <p><strong>2. 広告について</strong><br>
+                当サイトでは、第三者配信の広告サービス（Amazonアソシエイト等）を利用しており、ユーザーの興味に応じた商品やサービスの広告を表示するため、クッキー（Cookie）を使用しております。</p>
+                <br>
+                <p><strong>3. 免責事項</strong><br>
+                当サイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // サンプルデータをガジェット・日用品向けに変更
+        const links = [
+            {
+                video: "ガジェット編",
+                name: "Anker PowerCore 10000 (モバイルバッテリー)",
+                url: "https://www.amazon.co.jp/dp/dummy1",
+                image: "https://m.media-amazon.com/images/I/51+tX863P0L._AC_SX679_.jpg", // 画像はダミーです
+                star: 5,
+                comment: "世界最小・最軽量クラス！外出時の必需品です。",
+                ribbon: "殿堂入り" 
+            },
+            {
+                video: "無印良品編",
+                name: "無印良品 ポリプロピレンファイルボックス・スタンダード",
+                url: "https://www.amazon.co.jp/dp/dummy2",
+                image: "https://m.media-amazon.com/images/I/51hF4EktUeL._AC_SX679_.jpg",
+                star: 5,
+                comment: "書類だけでなく、キッチン下の収納にもシンデレラフィットします。"
+            },
+            {
+                video: "100均編(ダイソー)",
+                name: "電子レンジ調理器（パスタ用）",
+                url: "https://www.amazon.co.jp/dp/dummy3",
+                image: "", // 画像がない場合はNo Imageが表示されます
+                star: 4,
+                comment: "お湯を沸かさずに美味しいパスタが茹でられる神アイテム！"
+            },
+            {
+                video: "デスク周り編",
+                name: "BoYata ノートパソコンスタンド",
+                url: "https://www.amazon.co.jp/dp/dummy4",
+                image: "https://m.media-amazon.com/images/I/61H4W1w1q-L._AC_SX679_.jpg",
+                star: 5,
+                comment: "頑丈でタイピングしても揺れない。肩こり軽減に最適です。",
+                ribbon: "イチオシ"
+            },
+            {
+                video: "暮らしの便利編",
+                name: "山崎実業(Yamazaki) マグネット バスルームラック",
+                url: "https://www.amazon.co.jp/dp/dummy5",
+                image: "https://m.media-amazon.com/images/I/61D0hQ0F8SL._AC_SX679_.jpg",
+                star: 4,
+                comment: "お風呂の壁にピタッとくっつく。底が水切りになっているので衛生的。"
+            }
+        ];
+
+        // 以下のJavaScriptロジックは元のコードから一切変更していません
+        const container = document.getElementById('links-container');
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearBtn');
+        const sortSelect = document.getElementById('sortSelect');
+        const resultCount = document.getElementById('resultCount');
+        const noResult = document.getElementById('noResult');
+        const loader = document.getElementById('loader');
+        const resetSearchBtn = document.getElementById('resetSearchBtn');
+        
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const noImageSrc = "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22100%22%20fill%3D%22%23999%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20alignment-baseline%3D%22middle%22%3ENo%20Image%3C%2Ftext%3E%3C%2Fsvg%3E";
+
+        function updateList() {
+            const keyword = searchInput.value.toLowerCase();
+            const sortType = sortSelect.value;
+
+            if (keyword.length > 0) {
+                clearBtn.classList.add('visible');
+            } else {
+                clearBtn.classList.remove('visible');
+            }
+
+            let filtered = links.filter(item => {
+                const matchKeyword = 
+                    item.name.toLowerCase().includes(keyword) ||
+                    (item.video && item.video.toLowerCase().includes(keyword)) ||
+                    (item.comment && item.comment.toLowerCase().includes(keyword)) ||
+                    (item.ribbon && item.ribbon.toLowerCase().includes(keyword));
+                return matchKeyword;
+            });
+
+            if (sortType === 'star_desc') {
+                filtered.sort((a, b) => b.star - a.star);
+            } else if (sortType === 'star_asc') {
+                filtered.sort((a, b) => a.star - b.star);
+            }
+
+            if (filtered.length === links.length) {
+                resultCount.textContent = `全${filtered.length}アイテム`;
+            } else {
+                resultCount.textContent = `検索結果: ${filtered.length}アイテム`;
+            }
+
+            renderItems(filtered);
+        }
+
+        function renderItems(data) {
+            container.innerHTML = '';
+            
+            if (data.length === 0) {
+                noResult.style.display = 'block';
+                return;
+            }
+            noResult.style.display = 'none';
+
+            data.forEach((item, index) => {
+                const card = document.createElement('a');
+                card.className = 'link-card';
+                card.href = item.url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                
+                card.style.animation = `fadeUp 0.5s ease forwards ${index * 0.05}s`;
+
+                const videoHtml = item.video ? `<span class="category-tag">${item.video}</span>` : '';
+                
+                const imageHtml = item.image 
+                    ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy" onerror="this.src='${noImageSrc}'">` 
+                    : `<img src="${noImageSrc}" alt="No Image" class="card-image">`;
+                
+                let starHtml = '';
+                if (item.star) {
+                    const stars = '★'.repeat(item.star) + '☆'.repeat(5 - item.star);
+                    starHtml = `<div class="star-rating">${stars}</div>`;
+                }
+                const commentHtml = item.comment ? `<div class="recommend-comment">${item.comment}</div>` : '';
+                const ribbonHtml = item.ribbon ? `<div class="ribbon">${item.ribbon}</div>` : '';
+
+                card.innerHTML = `
+                    ${ribbonHtml}
+                    ${imageHtml} 
+                    <div class="card-text">
+                        ${videoHtml}
+                        <h2 class="item-name">${item.name}</h2>
+                        ${starHtml}
+                        ${commentHtml}
+                    </div>
+                    <div class="btn-arrow-box">
+                        <svg class="external-icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+            searchInput.focus();
+        });
+
+        resetSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+        });
+
+        const modal = document.getElementById('privacyModal');
+        document.getElementById('openPrivacy').addEventListener('click', () => modal.classList.add('open'));
+        document.getElementById('closePrivacy').addEventListener('click', () => modal.classList.remove('open'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('open');
+        });
+
+        searchInput.addEventListener('input', updateList);
+        sortSelect.addEventListener('change', updateList);
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.style.display = 'none';
+                updateList(); 
+            }, 500);
+        });
+        
+        setTimeout(() => {
+            if(loader.style.display !== 'none') {
+                loader.style.display = 'none';
+                updateList();
+            }
+        }, 2000);
+
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.style.display = "flex";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+        scrollTopBtn.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+</html>
