@@ -187,9 +187,7 @@
 
     <div class="container">
         <div id="resultCount" class="result-count"></div>
-        
         <div id="links-container" class="grid-container"></div>
-        
         <div id="noResult" class="no-result">
             <p>該当するアイテムが見つかりませんでした。</p>
             <button id="resetSearchBtn" class="reset-btn">条件をクリアする</button>
@@ -213,7 +211,7 @@
     </div>
 
     <script>
-        // サンプルデータを11件に増やしました
+        // サンプルデータ11件
         const links = [
             {
                 video: "ガジェット",
@@ -298,3 +296,110 @@
                 comment: "間接照明としても優秀。寝室に置くとリラックスできます。"
             },
             {
+                video: "日用品",
+                name: "マーナ(marna) 極 冷凍ごはん容器",
+                url: "https://www.amazon.co.jp/dp/dummy11",
+                image: "https://m.media-amazon.com/images/I/61jYmE9V1uL._AC_SX679_.jpg",
+                star: 5,
+                comment: "冷凍ご飯が炊き立てのようにふっくら解凍できます。もう手放せません。",
+                ribbon: "大人気"
+            }
+        ];
+
+        const container = document.getElementById('links-container');
+        const searchInput = document.getElementById('searchInput');
+        const sortSelect = document.getElementById('sortSelect');
+        const resultCount = document.getElementById('resultCount');
+        const noResult = document.getElementById('noResult');
+        const resetSearchBtn = document.getElementById('resetSearchBtn');
+        
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const noImageSrc = "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f9f9f9%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22100%22%20fill%3D%22%23cccccc%22%20font-size%3D%2216%22%20font-family%3D%22sans-serif%22%20text-anchor%3D%22middle%22%20alignment-baseline%3D%22middle%22%3ENo%20Image%3C%2Ftext%3E%3C%2Fsvg%3E";
+
+        function updateList() {
+            const keyword = searchInput.value.toLowerCase();
+            const sortType = sortSelect.value;
+
+            let filtered = links.filter(item => {
+                return item.name.toLowerCase().includes(keyword) ||
+                       (item.video && item.video.toLowerCase().includes(keyword)) ||
+                       (item.comment && item.comment.toLowerCase().includes(keyword));
+            });
+
+            if (sortType === 'star_desc') {
+                filtered.sort((a, b) => b.star - a.star);
+            } else if (sortType === 'star_asc') {
+                filtered.sort((a, b) => a.star - b.star);
+            }
+
+            resultCount.textContent = `${filtered.length}件のアイテム`;
+
+            renderItems(filtered);
+        }
+
+        function renderItems(data) {
+            container.innerHTML = '';
+            
+            if (data.length === 0) {
+                noResult.style.display = 'block';
+                return;
+            }
+            noResult.style.display = 'none';
+
+            data.forEach((item) => {
+                const card = document.createElement('a');
+                card.className = 'item-card';
+                card.href = item.url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                
+                const labelHtml = item.ribbon ? `<div class="pickup-label">${item.ribbon}</div>` : '';
+                const videoHtml = item.video ? `<div class="category-badge">#${item.video}</div>` : '';
+                
+                const imageHtml = item.image 
+                    ? `<img src="${item.image}" alt="${item.name}" class="card-img" loading="lazy" onerror="this.src='${noImageSrc}'">` 
+                    : `<img src="${noImageSrc}" alt="No Image" class="card-img">`;
+                
+                let starHtml = '';
+                if (item.star) {
+                    starHtml = `<div class="rating">★ ${item.star}.0</div>`;
+                }
+
+                card.innerHTML = `
+                    ${labelHtml}
+                    <div class="card-img-wrapper">
+                        ${imageHtml}
+                    </div>
+                    <div class="card-content">
+                        ${videoHtml}
+                        <h2 class="item-title">${item.name}</h2>
+                        ${starHtml}
+                        <div class="item-comment">${item.comment || ''}</div>
+                        <div class="amazon-btn">Amazonで詳細を見る</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        resetSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+        });
+
+        const modal = document.getElementById('privacyModal');
+        document.getElementById('openPrivacy').addEventListener('click', () => modal.classList.add('open'));
+        document.getElementById('closePrivacy').addEventListener('click', () => modal.classList.remove('open'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('open');
+        });
+
+        searchInput.addEventListener('input', updateList);
+        sortSelect.addEventListener('change', updateList);
+
+        // スクリプト読み込み直後にリストを更新して表示する
+        updateList();
+    </script>
+</body>
+</html>
