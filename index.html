@@ -15,7 +15,6 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔔</text></svg>">
-
     <link rel="apple-touch-icon" href="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,6 +90,8 @@
         .share-twitter { background-color: #000; }
         @media (prefers-color-scheme: dark) { .share-twitter { background-color: #333; border: 1px solid #555; } }
         .share-line { background-color: #06C755; }
+        /* LINEアイコンのサイズ調整 */
+        .share-line svg { width: 22px; height: 22px; }
 
         /* --- コントロールエリア --- */
         .control-area {
@@ -198,7 +199,6 @@
 
         .no-result { text-align: center; opacity: 0.6; padding: 20px; display: none; margin-top: 20px; }
         
-        /* ★検索結果ゼロ時のリセットボタン */
         .reset-btn {
             background-color: var(--primary-color); color: white; border: none;
             padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer;
@@ -282,7 +282,9 @@
 
         <div class="share-buttons">
             <a href="https://twitter.com/intent/tweet?text=藤子・F・不二雄マニア&url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-twitter">𝕏</a>
-            <a href="https://social-plugins.line.me/lineit/share?url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-line">L</a>
+            <a href="https://social-plugins.line.me/lineit/share?url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-line">
+                <svg viewBox="0 0 64 64" fill="currentColor"><path d="M32,11.8c-12.9,0-23.4,8.8-23.4,19.7c0,6.1,3.4,11.5,8.7,15.1c0.7,0.5,1,1.3,0.8,2.2c-0.3,2.1-1,5.5-1.2,6.3c-0.2,0.8,0.3,1.6,1.1,1.5c0.5-0.1,0.9-0.2,1.4-0.4c3.7-1.5,7.6-3.4,9.8-4.6c0.7-0.4,1.5-0.6,2.4-0.6c0.2,0,0.4,0,0.6,0c13,0,23.4-8.8,23.4-19.7S44.9,11.8,32,11.8z M20,35.5h-4.6c-0.6,0-1.1-0.5-1.1-1.1V25c0-0.6,0.5-1.1,1.1-1.1h4.6c0.6,0,1.1,0.5,1.1,1.1s-0.5,1.1-1.1,1.1h-3.5v2.2h3.5c0.6,0,1.1,0.5,1.1,1.1C21.1,35,20.6,35.5,20,35.5z M25.8,35.5c-0.6,0-1.1-0.5-1.1-1.1V25c0-0.6,0.5-1.1,1.1-1.1c0.6,0,1.1,0.5,1.1,1.1v9.4C26.9,35,26.4,35.5,25.8,35.5z M37,35.5h-3.5v-9.4c0-0.6,0.5-1.1,1.1-1.1c0.6,0,1.1,0.5,1.1,1.1v7.2l3.9-7.9c0.1-0.3,0.4-0.5,0.7-0.5h1c0.6,0,1.1,0.5,1.1,1.1v9.4c0,0.6-0.5,1.1-1.1,1.1c-0.6,0-1.1-0.5-1.1-1.1v-6.8l-3.9,7.9C37.5,35.3,37.3,35.5,37,35.5z M47.2,35.5h-4.6c-0.6,0-1.1-0.5-1.1-1.1V25c0-0.6,0.5-1.1,1.1-1.1h4.6c0.6,0,1.1,0.5,1.1,1.1c0,0.6-0.5,1.1-1.1,1.1h-3.5v2.2h3.5c0.6,0,1.1,0.5,1.1,1.1c0,0.6-0.5,1.1-1.1,1.1h-3.5v3.4h3.5c0.6,0,1.1,0.5,1.1,1.1C48.3,35,47.8,35.5,47.2,35.5z"/></svg>
+            </a>
         </div>
     </header>
 
@@ -336,239 +338,3 @@
                 当サイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。</p>
             </div>
         </div>
-    </div>
-
-    <script>
-        const links = [
-            {
-                video: "シリーズ1",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 1　ミノタウロスの皿",
-                url: "https://www.amazon.co.jp/dp/B0C13THNJ7",
-                image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg",
-                star: 5,
-                comment: "最初の一冊は絶対にコレ！",
-                ribbon: "イチオシ" 
-            },
-            {
-                video: "シリーズ2",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 2　ノスタル爺",
-                url: "https://www.amazon.co.jp/dp/B0C13W56RX",
-                image: "https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg",
-                star: 4,
-                comment: "ホラー好きにオススメ！"
-            },
-            {
-                video: "シリーズ3",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 3　カンビュセスの籤",
-                url: "https://www.amazon.co.jp/dp/B0C13XL6CN",
-                image: "https://m.media-amazon.com/images/I/61i4dLiHFYL._SL1500_.jpg",
-                star: 3
-            },
-            {
-                video: "シリーズ4",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 4　パラレル同窓会",
-                url: "https://www.amazon.co.jp/dp/B0C13Y1L3W",
-                image: "https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg",
-                star: 3
-            },
-            {
-                video: "シリーズ5",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 5　夢カメラ",
-                url: "https://www.amazon.co.jp/dp/B0C13WNK6X",
-                image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg",
-                star: 4,
-                comment: "衝撃的なラスト「ある日...」収録"
-            },
-            {
-                video: "シリーズ6",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 6　異人アンドロ氏",
-                url: "https://www.amazon.co.jp/dp/B0C13VP8BW",
-                image: "https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg",
-                star: 5
-            },
-            {
-                video: "シリーズ7",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 7　ポストの中の明日",
-                url: "https://www.amazon.co.jp/dp/B0C13WPVY4",
-                image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg",
-                star: 4
-            },
-            {
-                video: "シリーズ8",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 8　流血鬼",
-                url: "https://www.amazon.co.jp/dp/B0C13VXGY2",
-                image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg",
-                star: 4,
-                comment: "吸血鬼テーマの傑作。価値観が揺さぶられます。"
-            },
-            {
-                video: "シリーズ9",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 9　宇宙船製造法",
-                url: "https://www.amazon.co.jp/dp/B0C13VG3CQ",
-                image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg",
-                star: 5,
-                comment: "50年前にAIを先取りしていた⁉︎"
-            },
-            {
-                video: "シリーズ10",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス 10　征地球論",
-                url: "https://www.amazon.co.jp/dp/B0C13W74YH",
-                image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg",
-                star: 4
-            },
-            {
-                video: "全巻セット",
-                name: "藤子・F・不二雄SF短編コンプリート・ワークス",
-                url: "https://www.amazon.co.jp/dp/B0C4YRVRN3",
-                image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png",
-                star: 5,
-                ribbon: "完結セット"
-            }
-        ];
-
-        const container = document.getElementById('links-container');
-        const searchInput = document.getElementById('searchInput');
-        const clearBtn = document.getElementById('clearBtn');
-        const sortSelect = document.getElementById('sortSelect');
-        const resultCount = document.getElementById('resultCount');
-        const noResult = document.getElementById('noResult');
-        const loader = document.getElementById('loader');
-        const resetSearchBtn = document.getElementById('resetSearchBtn');
-        
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        const noImageSrc = "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22100%22%20fill%3D%22%23999%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20alignment-baseline%3D%22middle%22%3ENo%20Image%3C%2Ftext%3E%3C%2Fsvg%3E";
-
-        function updateList() {
-            const keyword = searchInput.value.toLowerCase();
-            const sortType = sortSelect.value;
-
-            if (keyword.length > 0) {
-                clearBtn.classList.add('visible');
-            } else {
-                clearBtn.classList.remove('visible');
-            }
-
-            let filtered = links.filter(item => {
-                const matchKeyword = 
-                    item.name.toLowerCase().includes(keyword) ||
-                    (item.video && item.video.toLowerCase().includes(keyword)) ||
-                    (item.comment && item.comment.toLowerCase().includes(keyword)) ||
-                    (item.ribbon && item.ribbon.toLowerCase().includes(keyword));
-                return matchKeyword;
-            });
-
-            if (sortType === 'star_desc') {
-                filtered.sort((a, b) => b.star - a.star);
-            } else if (sortType === 'star_asc') {
-                filtered.sort((a, b) => a.star - b.star);
-            }
-
-            if (filtered.length === links.length) {
-                resultCount.textContent = `全${filtered.length}作品`;
-            } else {
-                resultCount.textContent = `検索結果: ${filtered.length}作品`;
-            }
-
-            renderItems(filtered);
-        }
-
-        function renderItems(data) {
-            container.innerHTML = '';
-            
-            if (data.length === 0) {
-                noResult.style.display = 'block';
-                return;
-            }
-            noResult.style.display = 'none';
-
-            data.forEach((item, index) => {
-                const card = document.createElement('a');
-                card.className = 'link-card';
-                card.href = item.url;
-                card.target = '_blank';
-                card.rel = 'noopener noreferrer';
-                
-                card.style.animation = `fadeUp 0.5s ease forwards ${index * 0.05}s`;
-
-                const videoHtml = item.video ? `<span class="category-tag">${item.video}</span>` : '';
-                
-                // 画像処理
-                const imageHtml = item.image 
-                    ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy" onerror="this.src='${noImageSrc}'">` 
-                    : `<img src="${noImageSrc}" alt="No Image" class="card-image">`;
-                
-                let starHtml = '';
-                if (item.star) {
-                    const stars = '★'.repeat(item.star) + '☆'.repeat(5 - item.star);
-                    starHtml = `<div class="star-rating">${stars}</div>`;
-                }
-                const commentHtml = item.comment ? `<div class="recommend-comment">${item.comment}</div>` : '';
-                const ribbonHtml = item.ribbon ? `<div class="ribbon">${item.ribbon}</div>` : '';
-
-                card.innerHTML = `
-                    ${ribbonHtml}
-                    ${imageHtml} 
-                    <div class="card-text">
-                        ${videoHtml}
-                        <h2 class="item-name">${item.name}</h2>
-                        ${starHtml}
-                        ${commentHtml}
-                    </div>
-                    <div class="btn-arrow-box">
-                        <svg class="external-icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        clearBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            updateList();
-            searchInput.focus();
-        });
-
-        resetSearchBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            updateList();
-        });
-
-        const modal = document.getElementById('privacyModal');
-        document.getElementById('openPrivacy').addEventListener('click', () => modal.classList.add('open'));
-        document.getElementById('closePrivacy').addEventListener('click', () => modal.classList.remove('open'));
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.classList.remove('open');
-        });
-
-        searchInput.addEventListener('input', updateList);
-        sortSelect.addEventListener('change', updateList);
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loader.style.display = 'none';
-                updateList(); 
-            }, 500);
-        });
-        
-        setTimeout(() => {
-            if(loader.style.display !== 'none') {
-                loader.style.display = 'none';
-                updateList();
-            }
-        }, 2000);
-
-        const scrollTopBtn = document.getElementById("scrollTopBtn");
-        window.onscroll = function() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                scrollTopBtn.style.display = "flex";
-            } else {
-                scrollTopBtn.style.display = "none";
-            }
-        };
-        scrollTopBtn.addEventListener("click", function() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    </script>
-</body>
-</html>
