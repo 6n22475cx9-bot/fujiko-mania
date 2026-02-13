@@ -516,4 +516,59 @@
                         ${commentHtml}
                     </div>
                     <div class="btn-arrow-box">
-                        <svg class="external-icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></
+                        <svg class="external-icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+            searchInput.focus();
+        });
+
+        resetSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+        });
+
+        const modal = document.getElementById('privacyModal');
+        document.getElementById('openPrivacy').addEventListener('click', () => modal.classList.add('open'));
+        document.getElementById('closePrivacy').addEventListener('click', () => modal.classList.remove('open'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('open');
+        });
+
+        searchInput.addEventListener('input', updateList);
+        sortSelect.addEventListener('change', updateList);
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.style.display = 'none';
+                updateList(); 
+            }, 500);
+        });
+        
+        setTimeout(() => {
+            if(loader.style.display !== 'none') {
+                loader.style.display = 'none';
+                updateList();
+            }
+        }, 2000);
+
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.style.display = "flex";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+        scrollTopBtn.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+</html>
