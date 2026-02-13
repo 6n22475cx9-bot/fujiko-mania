@@ -13,7 +13,6 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💡</text></svg>">
-    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -25,7 +24,7 @@
             --border-color: #e0e0e0;
             --card-bg: #ffffff;
             --accent-color: #2b2b2b;
-            --btn-color: #0071e3; /* ガジェット感を出すためのブルー */
+            --btn-color: #0071e3;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -50,7 +49,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- ヘッダー（上部固定のナビゲーション風） --- */
+        /* --- ヘッダー --- */
         header {
             background-color: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
@@ -65,64 +64,31 @@
             gap: 15px;
         }
 
-        .logo-area {
-            display: flex;
-            flex-direction: column;
-        }
-
+        .logo-area { display: flex; flex-direction: column; }
         h1 { margin: 0; font-size: 1.3rem; font-weight: 700; color: var(--accent-color); }
         .subtitle { margin: 0; font-size: 0.75rem; color: var(--text-muted); }
 
-        .header-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
+        .header-actions { display: flex; gap: 10px; align-items: center; }
+        .youtube-link { font-size: 0.85rem; color: #ff0000; text-decoration: none; font-weight: bold; }
 
-        .youtube-link {
-            font-size: 0.85rem;
-            color: #ff0000;
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* --- 検索・フィルターエリア（ヘッダー直下） --- */
+        /* --- 検索・フィルターエリア --- */
         .filter-section {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 10px;
+            max-width: 1000px; margin: 20px auto; padding: 0 20px; display: flex; gap: 10px;
         }
 
         .search-box {
-            flex: 1;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 0.95rem;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            outline: none;
-            transition: border-color 0.2s;
+            flex: 1; padding: 12px 15px; border: 1px solid var(--border-color);
+            border-radius: 6px; font-size: 0.95rem; background-color: var(--card-bg);
+            color: var(--text-color); outline: none; transition: border-color 0.2s;
         }
         .search-box:focus { border-color: var(--btn-color); }
 
         .sort-select {
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            cursor: pointer;
-            outline: none;
-            font-size: 0.9rem;
+            padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 6px;
+            background-color: var(--card-bg); color: var(--text-color); cursor: pointer; outline: none;
         }
 
-        /* --- メインコンテンツ（グリッドレイアウト） --- */
+        /* --- メインコンテンツ --- */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px 40px 20px; min-height: 50vh; }
         .result-count { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; }
 
@@ -132,123 +98,55 @@
             gap: 20px;
         }
 
-        /* --- アイテムカード（縦長・ECサイト風） --- */
+        /* --- アイテムカード --- */
         .item-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background-color: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+            text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s;
             position: relative;
         }
 
-        .item-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-        }
+        .item-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
 
         .card-img-wrapper {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background-color: #fff;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%; aspect-ratio: 1 / 1; background-color: #fff; padding: 20px;
+            box-sizing: border-box; display: flex; align-items: center; justify-content: center;
             border-bottom: 1px solid var(--border-color);
         }
 
-        .card-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+        .card-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        .card-content {
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
+        .card-content { padding: 15px; display: flex; flex-direction: column; flex: 1; }
 
-        .category-badge {
-            font-size: 0.7rem;
-            color: var(--btn-color);
-            font-weight: bold;
-            margin-bottom: 6px;
-        }
+        .category-badge { font-size: 0.7rem; color: var(--btn-color); font-weight: bold; margin-bottom: 6px; }
 
         .item-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin: 0 0 10px 0;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            font-size: 0.95rem; font-weight: 700; margin: 0 0 10px 0; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
         }
 
-        .item-comment {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            flex: 1;
-        }
+        .item-comment { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; flex: 1; }
 
-        /* 評価（★を少しスタイリッシュに） */
-        .rating {
-            font-size: 0.8rem;
-            color: #FF9500;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+        .rating { font-size: 0.8rem; color: #FF9500; margin-bottom: 12px; font-weight: bold; }
 
         .amazon-btn {
-            display: block;
-            text-align: center;
-            background-color: var(--btn-color);
-            color: white;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            transition: background-color 0.2s;
+            display: block; text-align: center; background-color: var(--btn-color); color: white;
+            padding: 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; transition: background-color 0.2s;
         }
         .item-card:hover .amazon-btn { background-color: #005bb5; }
 
-        /* 左上のラベル */
         .pickup-label {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #ff3b30;
-            color: white;
-            font-size: 0.65rem;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 4px;
-            z-index: 2;
+            position: absolute; top: 10px; left: 10px; background-color: #ff3b30; color: white;
+            font-size: 0.65rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; z-index: 2;
         }
 
-        /* --- その他パーツ --- */
         .no-result { text-align: center; padding: 40px 20px; display: none; color: var(--text-muted); }
-        .reset-btn {
-            background-color: var(--accent-color); color: var(--bg-color); border: none;
-            padding: 10px 20px; border-radius: 6px; margin-top: 15px; cursor: pointer;
-        }
+        .reset-btn { background-color: var(--accent-color); color: var(--bg-color); border: none; padding: 10px 20px; border-radius: 6px; margin-top: 15px; cursor: pointer; }
 
         footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-muted); margin-top: 40px; }
         .privacy-link { cursor: pointer; text-decoration: underline; }
 
-        /* モーダル（前と同じ構造でデザインだけ微調整） */
+        /* モーダル */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
         .modal-overlay.open { display: flex; opacity: 1; }
         .modal-content { background: var(--card-bg); color: var(--text-color); padding: 30px; border-radius: 8px; max-width: 90%; width: 500px; max-height: 80vh; overflow-y: auto; position: relative; }
@@ -308,4 +206,95 @@
         <div class="modal-content">
             <div id="closePrivacy" class="modal-close">✕</div>
             <h3>プライバシーポリシー</h3>
-            <p style="font-size: 0.85rem;"><strong>1. 個人情報の利用目的</strong><br>当
+            <p style="font-size: 0.85rem;"><strong>1. 個人情報の利用目的</strong><br>当サイトでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。</p>
+            <p style="font-size: 0.85rem;"><strong>2. 広告について</strong><br>当サイトでは、第三者配信の広告サービスを利用しており、ユーザーの興味に応じた商品やサービスの広告を表示するため、クッキー（Cookie）を使用しております。</p>
+            <p style="font-size: 0.85rem;"><strong>3. 免責事項</strong><br>当サイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。</p>
+        </div>
+    </div>
+
+    <script>
+        // サンプルデータを11件に増やしました
+        const links = [
+            {
+                video: "ガジェット",
+                name: "Anker PowerCore 10000 (モバイルバッテリー)",
+                url: "https://www.amazon.co.jp/dp/dummy1",
+                image: "https://m.media-amazon.com/images/I/51+tX863P0L._AC_SX679_.jpg", 
+                star: 5,
+                comment: "世界最小・最軽量クラス。スマホと一緒に持ち歩くのに最適です。",
+                ribbon: "殿堂入り" 
+            },
+            {
+                video: "無印良品",
+                name: "無印良品 ポリプロピレンファイルボックス・スタンダード",
+                url: "https://www.amazon.co.jp/dp/dummy2",
+                image: "https://m.media-amazon.com/images/I/51hF4EktUeL._AC_SX679_.jpg",
+                star: 5,
+                comment: "書類だけでなく、フライパンや調味料の収納にもシンデレラフィット。"
+            },
+            {
+                video: "100均",
+                name: "ダイソー 電子レンジ調理器（パスタ用）",
+                url: "https://www.amazon.co.jp/dp/dummy3",
+                image: "", 
+                star: 4,
+                comment: "お湯を沸かさずに美味しいパスタが茹でられる神アイテム！一人暮らしの味方です。"
+            },
+            {
+                video: "ガジェット",
+                name: "BoYata ノートパソコンスタンド",
+                url: "https://www.amazon.co.jp/dp/dummy4",
+                image: "https://m.media-amazon.com/images/I/61H4W1w1q-L._AC_SX679_.jpg",
+                star: 5,
+                comment: "とにかくヒンジが硬くてタイピングしても全く揺れません。首の痛みが消えました。",
+                ribbon: "イチオシ"
+            },
+            {
+                video: "日用品",
+                name: "山崎実業(Yamazaki) マグネット バスルームラック",
+                url: "https://www.amazon.co.jp/dp/dummy5",
+                image: "https://m.media-amazon.com/images/I/61D0hQ0F8SL._AC_SX679_.jpg",
+                star: 4,
+                comment: "お風呂の壁にピタッとくっつく。底がスリット状になっていて水はけ抜群です。"
+            },
+            {
+                video: "無印良品",
+                name: "無印良品 素材を生かしたカレー バターチキン",
+                url: "https://www.amazon.co.jp/dp/dummy6",
+                image: "https://m.media-amazon.com/images/I/71X8k7zR0FL._AC_SX679_.jpg",
+                star: 5,
+                comment: "レトルトの枠を超えた美味しさ。ストック推奨です。"
+            },
+            {
+                video: "ガジェット",
+                name: "SwitchBot スマートリモコン ハブミニ",
+                url: "https://www.amazon.co.jp/dp/dummy7",
+                image: "https://m.media-amazon.com/images/I/51rY5d0a6ZL._AC_SX679_.jpg",
+                star: 4,
+                comment: "家中のリモコンをスマホ一つに集約。外出先からエアコンをつけられます。"
+            },
+            {
+                video: "100均",
+                name: "セリア 形状保持コードバンド",
+                url: "https://www.amazon.co.jp/dp/dummy8",
+                image: "",
+                star: 4,
+                comment: "ごちゃつくケーブルをスッキリまとめるのに便利。繰り返し使えます。"
+            },
+            {
+                video: "ガジェット",
+                name: "EarFun Air Pro 3 ワイヤレスイヤホン",
+                url: "https://www.amazon.co.jp/dp/dummy9",
+                image: "https://m.media-amazon.com/images/I/61Mv1A3k-eL._AC_SX679_.jpg",
+                star: 5,
+                comment: "1万円以下で買えるノイキャンイヤホンの中で最強のコスパ。"
+            },
+            {
+                video: "無印良品",
+                name: "無印良品 超音波アロマディフューザー",
+                url: "https://www.amazon.co.jp/dp/dummy10",
+                image: "https://m.media-amazon.com/images/I/51n3i6eU7rL._AC_SX679_.jpg",
+                star: 4,
+                comment: "間接照明としても優秀。寝室に置くとリラックスできます。"
+            },
+            {
