@@ -18,65 +18,176 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* スタイルは前回の「画像付きリスト版」と同じ */
-        :root { --primary-color: #0096D6; --accent-color: #E3001B; --ribbon-color: #ffaa00; --bg-color: #F4F8FA; --text-color: #333; --card-bg: #FFFFFF; }
-        @media (prefers-color-scheme: dark) { :root { --bg-color: #121212; --text-color: #e0e0e0; --card-bg: #1e1e1e; } }
+        /* --- 基本設定 --- */
+        :root {
+            --primary-color: #0096D6;
+            --accent-color: #E3001B;
+            --ribbon-color: #ffaa00;
+            --bg-color: #F4F8FA;
+            --text-color: #333333;
+            --card-bg: #FFFFFF;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #e0e0e0;
+                --card-bg: #1e1e1e;
+            }
+        }
+
         html { scroll-behavior: smooth; }
-        body { font-family: "M PLUS Rounded 1c", sans-serif; background: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
-        
-        header { background: var(--primary-color); background-image: radial-gradient(rgba(255, 255, 255, 0.2) 3px, transparent 3px); background-size: 20px 20px; color: #fff; text-align: center; padding: 3rem 1rem 3rem 1rem; position: relative; z-index: 1; }
+        body {
+            font-family: "M PLUS Rounded 1c", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0; line-height: 1.6;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            background-color: var(--primary-color);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.2) 3px, transparent 3px);
+            background-size: 20px 20px;
+            color: #fff;
+            text-align: center;
+            padding: 3rem 1rem 3rem 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
         h1 { margin: 0; font-size: 1.8rem; font-weight: 700; }
         p.subtitle { margin-top: 0.5rem; font-size: 0.95rem; opacity: 0.95; }
-        
-        .youtube-btn { display: inline-block; margin-top: 20px; background: white; color: var(--accent-color); padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 3px 6px rgba(0,0,0,0.2); transition: transform 0.2s; }
+
+        .youtube-btn {
+            display: inline-block; margin-top: 20px; background-color: white; color: var(--accent-color);
+            padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2); transition: transform 0.2s;
+        }
         .youtube-btn:hover { transform: translateY(-2px); }
+
         .share-buttons { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
-        .share-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; border-radius: 24px; color: white; text-decoration: none; font-size: 1rem; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: transform 0.2s; }
+        .share-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 8px 16px; border-radius: 24px;
+            color: white; text-decoration: none; font-size: 1rem; font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: transform 0.2s;
+        }
         .share-btn:hover { transform: scale(1.05); }
         .share-twitter { background-color: #000; }
         @media (prefers-color-scheme: dark) { .share-twitter { background-color: #333; border: 1px solid #555; } }
         .share-line { background-color: #06C755; }
 
-        .tab-container { display: flex; justify-content: center; gap: 10px; margin: -25px auto 30px auto; max-width: 600px; padding: 0 20px; position: relative; z-index: 999; }
-        .tab-btn { flex: 1; padding: 15px 0; border: none; border-radius: 30px; font-family: inherit; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.2s, background-color 0.2s; background: var(--card-bg); color: #888; -webkit-tap-highlight-color: transparent; }
-        .tab-btn.active { background: var(--accent-color); color: white; transform: translateY(-5px); box-shadow: 0 6px 15px rgba(227, 0, 27, 0.3); }
+        /* --- タブメニュー --- */
+        .tab-container {
+            display: flex; justify-content: center; gap: 10px; 
+            margin: -25px auto 30px auto;
+            max-width: 600px; padding: 0 20px; 
+            position: relative; 
+            z-index: 999;
+        }
+        .tab-btn {
+            flex: 1; padding: 15px 0; border: none; border-radius: 30px;
+            font-family: inherit; font-weight: bold; font-size: 1rem;
+            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background-color 0.2s;
+            background-color: var(--card-bg); color: #888;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .tab-btn.active {
+            background-color: var(--accent-color); color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(227, 0, 27, 0.3);
+        }
 
+        /* --- コンテンツエリア --- */
         .container { max-width: 800px; margin: 0 auto; padding: 0 20px 30px 20px; }
+        
         .content-section { display: none; animation: fadeIn 0.4s ease; }
         .content-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .search-container { display: flex; gap: 5px; background: #FFF; padding: 10px 15px; border-radius: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); align-items: center; margin-bottom: 30px; }
-        @media (prefers-color-scheme: dark) { .search-container { background: #2d2d2d; } }
-        .search-box { flex: 1; padding: 10px 5px; border: none; font-size: 1rem; outline: none; background: transparent; font-family: inherit; color: var(--text-color); }
+        /* 検索エリア */
+        .search-container {
+            display: flex; gap: 5px; background-color: #FFF; padding: 10px 15px;
+            border-radius: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); align-items: center;
+            margin-bottom: 30px;
+        }
+        @media (prefers-color-scheme: dark) { .search-container { background-color: #2d2d2d; } }
+        
+        .search-box {
+            flex: 1; padding: 10px 5px; border: none; font-size: 1rem; outline: none;
+            background: transparent; font-family: inherit; color: var(--text-color);
+        }
         .search-box::-webkit-search-cancel-button { display: none; }
-        .clear-btn { cursor: pointer; color: #999; font-size: 1.2rem; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; visibility: hidden; }
+        .clear-btn {
+            cursor: pointer; color: #999; font-size: 1.2rem; width: 30px; height: 30px;
+            display: flex; align-items: center; justify-content: center; visibility: hidden;
+        }
         .clear-btn.visible { visibility: visible; }
-        .sort-select { padding: 10px 15px; border-radius: 30px; border: 1px solid rgba(0,0,0,0.1); font-size: 0.9rem; background: var(--bg-color); color: var(--text-color); cursor: pointer; outline: none; font-weight: bold; }
+        .sort-select {
+            padding: 10px 15px; border-radius: 30px; border: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.9rem; background: var(--bg-color); color: var(--text-color);
+            cursor: pointer; outline: none; font-weight: bold;
+        }
         .result-count { text-align: right; font-size: 0.85rem; opacity: 0.7; margin-bottom: 15px; padding-right: 10px; height: 20px; }
 
+        /* --- 記事リスト --- */
         .article-list { display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-bottom: 40px; }
-        .article-card { background: var(--card-bg); border-radius: 12px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-decoration: none; color: inherit; transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.05); display: flex; align-items: center; gap: 15px; }
+        
+        .article-card {
+            background: var(--card-bg); border-radius: 12px; padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-decoration: none; color: inherit;
+            transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.05);
+            display: flex; align-items: center; gap: 15px;
+        }
         .article-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .article-thumb { width: 70px; height: auto; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-shrink: 0; background: #fff; }
+        
+        .article-thumb {
+            width: 70px; height: auto; border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-shrink: 0;
+            background-color: #fff;
+        }
+
         .article-info { flex: 1; }
         .article-date { font-size: 0.75rem; opacity: 0.6; display: block; margin-bottom: 2px; }
         .article-title { font-size: 1rem; font-weight: bold; margin: 0 0 5px 0; color: var(--primary-color); line-height: 1.4; }
         .article-desc { font-size: 0.85rem; opacity: 0.8; margin: 0; line-height: 1.4; }
 
+        /* --- 商品リンク（SF短編一覧） --- */
         .link-list { display: grid; gap: 20px; }
-        .link-card { background: var(--card-bg); border-radius: 12px; padding: 20px; display: flex; align-items: flex-start; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; color: inherit; border-left: 6px solid var(--primary-color); position: relative; overflow: hidden; }
+        .link-card {
+            background: var(--card-bg); border-radius: 12px; padding: 20px;
+            display: flex; align-items: flex-start; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-decoration: none; color: inherit; border-left: 6px solid var(--primary-color);
+            position: relative; overflow: hidden;
+        }
         .link-card:hover { transform: translateY(-3px); }
-        .ribbon { position: absolute; top: 12px; right: -28px; background: var(--ribbon-color); color: white; font-size: 0.7rem; font-weight: bold; padding: 5px 0; transform: rotate(45deg); width: 100px; text-align: center; }
+        .ribbon {
+            position: absolute; top: 12px; right: -28px; background-color: var(--ribbon-color);
+            color: white; font-size: 0.7rem; font-weight: bold; padding: 5px 0;
+            transform: rotate(45deg); width: 100px; text-align: center;
+        }
         .card-image { width: 80px; margin-right: 20px; border-radius: 6px; }
         .card-text { flex: 1; padding-right: 30px; }
         .item-name { font-size: 1.15rem; font-weight: bold; margin: 0 0 8px 0; }
         .star-rating { color: #f39c12; font-size: 1.3rem; margin-bottom: 8px; letter-spacing: 2px; }
-        .recommend-comment { font-size: 0.9rem; color: #444; background: #fff3cd; border: 1px solid #ffeeba; padding: 6px 12px; border-radius: 20px; display: inline-block; margin-top: 5px; }
-        .reset-btn { background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 20px; margin-top: 10px; cursor: pointer; }
+        .recommend-comment { 
+            font-size: 0.9rem; color: #444; background-color: #fff3cd; 
+            border: 1px solid #ffeeba; padding: 6px 12px; border-radius: 20px; 
+            display: inline-block; margin-top: 5px; 
+        }
+        .reset-btn {
+            background-color: var(--primary-color); color: white; border: none;
+            padding: 10px 20px; border-radius: 20px; margin-top: 10px; cursor: pointer;
+        }
         .no-result { text-align: center; display: none; padding: 20px; }
+
         footer { text-align: center; padding: 50px 0; opacity: 0.7; font-size: 0.8rem; margin-top: 40px; }
-        @media (max-width: 600px) { .search-container { flex-direction: row; flex-wrap: wrap; } .search-box { width: 100%; order: 1; } .clear-btn { order: 2; } .sort-select { width: 100%; order: 3; margin-left: 0; margin-top: 10px; } }
+        @media (max-width: 600px) {
+            .search-container { flex-direction: row; flex-wrap: wrap; }
+            .search-box { width: 100%; order: 1; } .clear-btn { order: 2; } .sort-select { width: 100%; order: 3; margin-left: 0; margin-top: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -84,7 +195,11 @@
     <header id="top">
         <h1>藤子・F・不二雄マニア</h1>
         <p class="subtitle">YouTubeで紹介したグッズ・書籍まとめ</p>
-        <a href="https://www.youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="youtube-btn">▶ YouTubeを見る</a>
+        
+        <a href="https://www.youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="youtube-btn">
+            ▶ YouTubeを見る
+        </a>
+
         <div class="share-buttons">
             <a href="https://twitter.com/intent/tweet?text=藤子・F・不二雄マニア&url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-twitter">𝕏</a>
             <a href="https://social-plugins.line.me/lineit/share?url=https://6n22475cx9-bot.github.io/fujiko-mania/" target="_blank" class="share-btn share-line">LINE</a>
@@ -93,14 +208,14 @@
 
     <div class="tab-container">
         <button id="tab-btn-review" class="tab-btn active" onclick="switchTab('review')">📕 作品レビュー</button>
-        <button id="tab-btn-goods" class="tab-btn" onclick="switchTab('goods')">🎁 グッズ検索</button>
+        <button id="tab-btn-goods" class="tab-btn" onclick="switchTab('goods')">📚 SF短編一覧</button>
     </div>
 
     <div class="container">
         
         <div id="review-content" class="content-section active">
             <h2 style="text-align:center; margin-bottom:20px; font-size:1.3rem;">作品別レビュー</h2>
-           <div class="article-list">
+            <div class="article-list">
                 
                 <a href="articles/001.html" class="article-card">
                     <img src="https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg" alt="ミノタウロス" class="article-thumb">
@@ -199,16 +314,14 @@
                 </a>
 
             </div>
-
-            </div>
             <div style="text-align:center; margin-top:20px;">
-                <button onclick="switchTab('goods')" style="background:var(--primary-color); color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">グッズを探す →</button>
+                <button onclick="switchTab('goods')" style="background:var(--primary-color); color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">SF短編一覧を見る →</button>
             </div>
         </div>
 
         <div id="goods-content" class="content-section">
             <div class="search-container">
-                <input type="text" id="searchInput" class="search-box" placeholder="グッズを検索 (例: SF, 怖い...)">
+                <input type="text" id="searchInput" class="search-box" placeholder="作品名や巻数を検索...">
                 <div id="clearBtn" class="clear-btn">✕</div>
                 <select id="sortSelect" class="sort-select">
                     <option value="default">シリーズ順</option>
@@ -227,12 +340,14 @@
     </div>
 
     <footer>
-        <p class="disclaimer">当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。</p>
+        <p class="disclaimer">
+            当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
+        </p>
         <p>&copy; <span id="currentYear"></span> 藤子・F・不二雄マニア All Rights Reserved.</p>
     </footer>
 
     <script>
-        // タブ切り替え
+        // タブ切り替え機能
         window.switchTab = function(tabName) {
             const reviewContent = document.getElementById('review-content');
             const goodsContent = document.getElementById('goods-content');
@@ -252,18 +367,19 @@
             }
         };
 
-        // グッズリスト
+        // 商品データ
         const links = [
             { name: "SF短編コンプリート・ワークス 1 ミノタウロスの皿", url: "https://www.amazon.co.jp/dp/B0C13THNJ7", image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg", star: 5, comment: "最初の一冊は絶対にコレ！", ribbon: "イチオシ" },
             { name: "SF短編コンプリート・ワークス 2 ノスタル爺", url: "https://www.amazon.co.jp/dp/B0C13W56RX", image: "https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg", star: 4, comment: "ホラー好きにオススメ！" },
             { name: "SF短編コンプリート・ワークス 3 カンビュセスの籤", url: "https://www.amazon.co.jp/dp/B0C13XL6CN", image: "https://m.media-amazon.com/images/I/61i4dLiHFYL._SL1500_.jpg", star: 3 },
             { name: "SF短編コンプリート・ワークス 4 パラレル同窓会", url: "https://www.amazon.co.jp/dp/B0C13Y1L3W", image: "https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg", star: 3 },
-            { name: "SF短編コンプリート・ワークス 5 夢カメラ", url: "https://www.amazon.co.jp/dp/B0C13WNK6X", image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg", star: 4 },
+            { name: "SF短編コンプリート・ワークス 5 夢カメラ", url: "https://www.amazon.co.jp/dp/B0C13WNK6X", image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg", star: 4, comment: "衝撃的なラスト「ある日...」収録" },
             { name: "SF短編コンプリート・ワークス 6 異人アンドロ氏", url: "https://www.amazon.co.jp/dp/B0C13VP8BW", image: "https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg", star: 5 },
             { name: "SF短編コンプリート・ワークス 7 ポストの中の明日", url: "https://www.amazon.co.jp/dp/B0C13WPVY4", image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg", star: 4 },
-            { name: "SF短編コンプリート・ワークス 8 流血鬼", url: "https://www.amazon.co.jp/dp/B0C13VXGY2", image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg", star: 4, comment: "価値観逆転の傑作！" },
-            { name: "SF短編コンプリート・ワークス 9 宇宙船製造法", url: "https://www.amazon.co.jp/dp/B0C13VG3CQ", image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg", star: 5 },
-            { name: "SF短編コンプリート・ワークス 10 征地球論", url: "https://www.amazon.co.jp/dp/B0C13W74YH", image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg", star: 4 }
+            { name: "SF短編コンプリート・ワークス 8 流血鬼", url: "https://www.amazon.co.jp/dp/B0C13VXGY2", image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg", star: 4, comment: "吸血鬼テーマの傑作。価値観が揺さぶられます。" },
+            { name: "SF短編コンプリート・ワークス 9 宇宙船製造法", url: "https://www.amazon.co.jp/dp/B0C13VG3CQ", image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg", star: 5, comment: "50年前にAIを先取りしていた⁉︎" },
+            { name: "SF短編コンプリート・ワークス 10 征地球論", url: "https://www.amazon.co.jp/dp/B0C13W74YH", image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg", star: 4 },
+            { name: "SF短編コンプリート・ワークス", url: "https://www.amazon.co.jp/dp/B0C4YRVRN3", image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png", star: 5, ribbon: "完結セット" }
         ];
 
         const container = document.getElementById('links-container');
@@ -273,50 +389,113 @@
         const resultCount = document.getElementById('resultCount');
         const noResult = document.getElementById('noResult');
         const resetSearchBtn = document.getElementById('resetSearchBtn');
+        
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         const noImageSrc = "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22100%22%20fill%3D%22%23999%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20alignment-baseline%3D%22middle%22%3ENo%20Image%3C%2Ftext%3E%3C%2Fsvg%3E";
 
         function updateList() {
             const keyword = searchInput.value.toLowerCase();
             const sortType = sortSelect.value;
-            if (keyword.length > 0) clearBtn.classList.add('visible'); else clearBtn.classList.remove('visible');
+
+            if (keyword.length > 0) {
+                clearBtn.classList.add('visible');
+            } else {
+                clearBtn.classList.remove('visible');
+            }
+
             let filtered = links.filter(item => {
-                const matchKeyword = item.name.toLowerCase().includes(keyword) || (item.comment && item.comment.toLowerCase().includes(keyword)) || (item.ribbon && item.ribbon.toLowerCase().includes(keyword));
+                const matchKeyword = 
+                    item.name.toLowerCase().includes(keyword) ||
+                    (item.comment && item.comment.toLowerCase().includes(keyword)) ||
+                    (item.ribbon && item.ribbon.toLowerCase().includes(keyword));
                 return matchKeyword;
             });
-            if (sortType === 'star_desc') filtered.sort((a, b) => b.star - a.star);
-            else if (sortType === 'star_asc') filtered.sort((a, b) => a.star - b.star);
-            
-            if (filtered.length === links.length) resultCount.textContent = `全${filtered.length}作品`;
-            else resultCount.textContent = `検索結果: ${filtered.length}作品`;
+
+            if (sortType === 'star_desc') {
+                filtered.sort((a, b) => b.star - a.star);
+            } else if (sortType === 'star_asc') {
+                filtered.sort((a, b) => a.star - b.star);
+            }
+
+            if (filtered.length === links.length) {
+                resultCount.textContent = `全${filtered.length}作品`;
+            } else {
+                resultCount.textContent = `検索結果: ${filtered.length}作品`;
+            }
+
             renderItems(filtered);
         }
 
         function renderItems(data) {
             container.innerHTML = '';
-            if (data.length === 0) { noResult.style.display = 'block'; return; }
+            
+            if (data.length === 0) {
+                noResult.style.display = 'block';
+                return;
+            }
             noResult.style.display = 'none';
+
             data.forEach((item, index) => {
                 const card = document.createElement('a');
-                card.className = 'link-card'; card.href = item.url; card.target = '_blank'; card.rel = 'noopener noreferrer';
-                card.style.opacity = '0'; card.style.animation = `fadeUp 0.5s ease forwards ${index * 0.05}s`;
-                const imageHtml = item.image ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy" onerror="this.src='${noImageSrc}'">` : `<img src="${noImageSrc}" alt="No Image" class="card-image">`;
-                let starHtml = item.star ? `<div class="star-rating">${'★'.repeat(item.star) + '☆'.repeat(5 - item.star)}</div>` : '';
+                card.className = 'link-card';
+                card.href = item.url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                
+                // カードの出現アニメーション
+                card.style.opacity = '0';
+                card.style.animation = `fadeUp 0.5s ease forwards ${index * 0.05}s`;
+
+                // 画像表示
+                const imageHtml = item.image 
+                    ? `<img src="${item.image}" alt="${item.name}" class="card-image" loading="lazy" onerror="this.src='${noImageSrc}'">` 
+                    : `<img src="${noImageSrc}" alt="No Image" class="card-image">`;
+                
+                let starHtml = '';
+                if (item.star) {
+                    const stars = '★'.repeat(item.star) + '☆'.repeat(5 - item.star);
+                    starHtml = `<div class="star-rating">${stars}</div>`;
+                }
                 const commentHtml = item.comment ? `<div class="recommend-comment">${item.comment}</div>` : '';
                 const ribbonHtml = item.ribbon ? `<div class="ribbon">${item.ribbon}</div>` : '';
-                card.innerHTML = `${ribbonHtml}${imageHtml}<div class="card-text"><h2 class="item-name">${item.name}</h2>${starHtml}${commentHtml}</div><div style="color:var(--primary-color);">→</div>`;
+
+                card.innerHTML = `
+                    ${ribbonHtml}
+                    ${imageHtml} 
+                    <div class="card-text">
+                        <h2 class="item-name">${item.name}</h2>
+                        ${starHtml}
+                        ${commentHtml}
+                    </div>
+                    <div style="color:var(--primary-color);">→</div>
+                `;
                 container.appendChild(card);
             });
         }
         
+        // CSSアニメーション定義
         const styleSheet = document.createElement("style");
         styleSheet.innerText = "@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }";
         document.head.appendChild(styleSheet);
-        clearBtn.addEventListener('click', () => { searchInput.value = ''; updateList(); searchInput.focus(); });
-        resetSearchBtn.addEventListener('click', () => { searchInput.value = ''; updateList(); });
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+            searchInput.focus();
+        });
+
+        resetSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            updateList();
+        });
+
         searchInput.addEventListener('input', updateList);
         sortSelect.addEventListener('change', updateList);
-        renderItems(links); updateList();
+
+        // 初期表示
+        renderItems(links);
+        updateList();
     </script>
 </body>
 </html>
