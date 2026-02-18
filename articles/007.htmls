@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【レビュー】SF短編CW 7巻「ポストの中の明日」 | 藤子・F・不二雄マニア</title>
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://6n22475cx9-bot.github.io/fujiko-mania/articles/007.html" />
+    <meta property="og:image" content="https://6n22475cx9-bot.github.io/fujiko-mania/ogp_image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔔</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #0096D6; --bg-color: #F4F8FA; --text-color: #333; --card-bg: #FFF; }
+        @media (prefers-color-scheme: dark) { :root { --bg-color: #121212; --text-color: #e0e0e0; --card-bg: #1e1e1e; } }
+        body { font-family: "M PLUS Rounded 1c", sans-serif; background: var(--bg-color); color: var(--text-color); margin: 0; line-height: 1.8; }
+        header { background: var(--primary-color); color: white; padding: 1rem; text-align: center; font-weight: bold; }
+        header a { color: white; text-decoration: none; }
+        .article-container { max-width: 800px; margin: 0 auto; padding: 20px; background: var(--card-bg); min-height: 100vh; }
+        h1 { font-size: 1.6rem; border-bottom: 3px solid var(--primary-color); padding-bottom: 10px; margin: 30px 0; }
+        h2 { font-size: 1.3rem; background: rgba(0,150,214,0.1); padding: 10px; border-left: 5px solid var(--primary-color); margin-top: 40px; }
+        .book-link-card { border: 2px solid #eee; padding: 20px; border-radius: 10px; display: flex; gap: 20px; margin: 40px 0; align-items: center; }
+        .book-img { width: 100px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+        .buy-btn { background: #ff9900; color: white; padding: 10px 30px; text-decoration: none; border-radius: 30px; font-weight: bold; display: inline-block; margin-top: 10px; }
+        footer { text-align: center; padding: 40px 0; opacity: 0.7; font-size: 0.8rem; }
+        @media (max-width: 600px) { .book-link-card { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+<body>
+    <header><a href="../index.html">← トップへ戻る</a></header>
+    <div class="article-container">
+        <p style="font-size:0.8rem;">公開日: 2026/02/13</p>
+        <h1>【レビュー】7巻「ポストの中の明日」感想</h1>
+        <p>未来を知ることが本当に幸せなのか？ 第7巻は、時間や予知にまつわる不思議な物語が詰まっています。</p>
+        
+        <h2>収録作品と見どころ</h2>
+        <p><strong>主な収録作品：</strong>ポストの中の明日、みどりの守り神、老年期の終り など</p>
+        <p>「みどりの守り神」は、人類が滅びた後の世界で目覚めた少年と少女の物語。<br>
+        絶望的な状況なのにどこか希望を感じさせる、美しいラストシーンが印象的です。</p>
+
+        <h2>読んだ感想</h2>
+        <p>未来への希望と不安が入り混じった、味わい深い短編集です。<br>
+        「もし明日、世界が終わるとしたら？」そんな問いかけをしてくるような作品が多く、読み応えがあります。</p>
+
+        <div class="book-link-card">
+            <img src="https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg" alt="第7巻" class="book-img">
+            <div>
+                <p><strong>SF短編コンプリート・ワークス 7</strong></p>
+                <p>未来予知や終末世界を描く。「みどりの守り神」収録。</p>
+                <a href="https://www.amazon.co.jp/dp/B0C13WPVY4" target="_blank" class="buy-btn">Amazonで見る</a>
+            </div>
+        </div>
+    </div>
+    <footer><p>&copy; 藤子・F・不二雄マニア</p></footer>
+</body>
+</html>
