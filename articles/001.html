@@ -30,6 +30,44 @@
         .buy-btn:active { transform: translateY(4px); box-shadow: none; }
         footer { text-align: center; padding: 40px 0; opacity: 0.7; font-size: 0.8rem; }
         @media (max-width: 600px) { .book-link-card { flex-direction: column; text-align: center; } }
+        /* --- 追従型購入ボタン（スマホ向け） --- */
+        .sticky-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid #ddd;
+            padding: 10px 0 15px 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            display: none; /* 初期状態では非表示（PCでは出さない） */
+            backdrop-filter: blur(5px);
+        }
+        .sticky-btn {
+            background: #ff9900;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            width: 85%;
+            max-width: 400px;
+            box-shadow: 0 4px 0 #cc7a00;
+            transition: transform 0.1s;
+        }
+        .sticky-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        /* スマホサイズ（幅600px以下）の時だけ表示する */
+        @media (max-width: 600px) {
+            .sticky-bottom-bar { display: block; }
+            body { padding-bottom: 80px; } /* フッターがボタンに隠れないよう余白を追加 */
+        }
     </style>
 </head>
 <body>
