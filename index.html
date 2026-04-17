@@ -196,8 +196,7 @@
         <h1>藤子・F・不二雄マニア</h1>
         <p class="subtitle">YouTubeで紹介したグッズ・書籍まとめ</p>
         
-        <a href="https://youtube.com/channel/UCwDV6Arqndee5rRyDNZL6Tg?si=gICXE1cu9hktV_O2
-" target="_blank" class="youtube-btn">
+        <a href="https://www.youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="youtube-btn">
             ▶ YouTubeを見る
         </a>
 
@@ -208,13 +207,13 @@
     </header>
 
     <div class="tab-container">
-        <button id="tab-btn-review" class="tab-btn active" onclick="switchTab('review')">📕 作品レビュー</button>
-        <button id="tab-btn-goods" class="tab-btn" onclick="switchTab('goods')">📚 SF短編一覧</button>
+        <button id="tab-btn-review" class="tab-btn" onclick="switchTab('review')">📕 作品レビュー</button>
+        <button id="tab-btn-goods" class="tab-btn active" onclick="switchTab('goods')">📚 SF短編一覧</button>
     </div>
 
     <div class="container">
         
-        <div id="review-content" class="content-section active">
+        <div id="review-content" class="content-section">
             <h2 style="text-align:center; margin-bottom:20px; font-size:1.3rem;">作品別レビュー</h2>
             <div class="article-list">
                 
@@ -227,7 +226,7 @@
                 </a>
 
                 <a href="articles/002.html" class="article-card">
-                    <img src="https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg" alt="じじぬき" class="article-thumb">
+                    <img src="https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg" alt="じじぬき" class="article-thumb">
                     <div class="article-info">
                         <h3 class="article-title">じじぬき</h3>
                         <p class="article-desc">誰が老人を引き取る？ 高齢化社会を描いたブラックユーモア。</p>
@@ -235,7 +234,7 @@
                 </a>
 
                 <a href="articles/003.html" class="article-card">
-                    <img src="https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg" alt="気楽に殺ろうよ" class="article-thumb">
+                    <img src="https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg" alt="気楽に殺ろうよ" class="article-thumb">
                     <div class="article-info">
                         <h3 class="article-title">気楽に殺ろうよ</h3>
                         <p class="article-desc">殺人が合法化された世界。食欲と殺欲が交錯する狂気。</p>
@@ -243,7 +242,7 @@
                 </a>
 
                 <a href="articles/004.html" class="article-card">
-                    <img src="https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg" alt="劇画オバQ" class="article-thumb">
+                    <img src="https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg" alt="劇画オバQ" class="article-thumb">
                     <div class="article-info">
                         <h3 class="article-title">劇画・オバQ</h3>
                         <p class="article-desc">大人になったQちゃんと正ちゃん。15年後の再会はあまりに切なく…。</p>
@@ -259,7 +258,7 @@
                 </a>
 
                 <a href="articles/006.html" class="article-card">
-                    <img src="https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg" alt="定年退食" class="article-thumb">
+                    <img src="https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg" alt="定年退食" class="article-thumb">
                     <div class="article-info">
                         <h3 class="article-title">定年退食</h3>
                         <p class="article-desc">高齢者は「定員」オーバー？ 現代日本を予見した恐怖の未来。</p>
@@ -316,11 +315,11 @@
 
             </div>
             <div style="text-align:center; margin-top:20px;">
-                <button onclick="switchTab('goods')" style="background:var(--primary-color); color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">SF短編一覧を見る →</button>
+                <button onclick="switchTab('goods')" style="background:var(--primary-color); color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">SF短編一覧へ戻る →</button>
             </div>
         </div>
 
-        <div id="goods-content" class="content-section">
+        <div id="goods-content" class="content-section active">
             <div class="search-container">
                 <input type="text" id="searchInput" class="search-box" placeholder="作品名や巻数を検索...">
                 <div id="clearBtn" class="clear-btn">✕</div>
@@ -368,19 +367,19 @@
             }
         };
 
-        // 商品データ
+        // 商品データ（もしもアフィリエイトのリンク適用済み）
         const links = [
-            { name: "SF短編コンプリート・ワークス 1 ミノタウロスの皿", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2FB0C13THNJ7//af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2FB0C13THNJ7", image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg", star: 5, comment: "最初の一冊は絶対にコレ！", ribbon: "イチオシ" },
-            { name: "SF短編コンプリート・ワークス 2 ノスタル爺", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fproduct%2FB0C13W56RX%3Fref_%3Ddbs_p_pwh_rwt_anx_cl_1%26storeType%3Debooks", image: "https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg", star: 4, comment: "ホラー好きにオススメ！" },
-            { name: "SF短編コンプリート・ワークス 3 カンビュセスの籤", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fproduct%2FB0C13XL6CN%3Fref_%3Ddbs_p_pwh_rwt_anx_cl_2%26storeType%3Debooks", image: "https://m.media-amazon.com/images/I/61i4dLiHFYL._SL1500_.jpg", star: 3 },
-            { name: "SF短編コンプリート・ワークス 4 パラレル同窓会", url: "https:////af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fproduct%2FB0C13Y1L3W%3Fref_%3Ddbs_p_pwh_rwt_anx_cl_3%26storeType%3Debooks", image: "https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg", star: 3 },
-            { name: "SF短編コンプリート・ワークス 5 夢カメラ", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fproduct%2FB0C13WNK6X%3Fref_%3Ddbs_p_pwh_rwt_anx_cl_4%26storeType%3Debooks", image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg", star: 4, comment: "衝撃的なラスト「ある日...」収録" },
-            { name: "SF短編コンプリート・ワークス 6 異人アンドロ氏", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2F%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BBF%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584SF%25E7%259F%25AD%25E7%25B7%25A8%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2597%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%2588%25E3%2583%25BB%25E3%2583%25AF%25E3%2583%25BC%25E3%2582%25AF%25E3%2582%25B9-6-%25E7%2595%25B0%25E4%25BA%25BA%25E3%2582%25A2%25E3%2583%25B3%25E3%2583%2589%25E3%2583%25AD%25E6%25B0%258F-%25E3%2583%2593%25E3%2583%2583%25E3%2582%25B0%25E3%2582%25B3%25E3%2583%259F%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2582%25B9%25E3%2583%259A%25E3%2582%25B7%25E3%2583%25A3%25E3%2583%25AB-%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BB%25EF%25BC%25A6%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584-ebook%2Fdp%2FB0C13VP8BW%3Fref_%3Dsaga_dp_ss_dsk_dp", image: "https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg", star: 5 },
-            { name: "SF短編コンプリート・ワークス 7 ポストの中の明日", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2F%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BBF%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584SF%25E7%259F%25AD%25E7%25B7%25A8%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2597%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%2588%25E3%2583%25BB%25E3%2583%25AF%25E3%2583%25BC%25E3%2582%25AF%25E3%2582%25B9-7-%25E3%2583%259D%25E3%2582%25B9%25E3%2583%2588%25E3%2581%25AE%25E4%25B8%25AD%25E3%2581%25AE%25E6%2598%258E%25E6%2597%25A5-%25E3%2583%2593%25E3%2583%2583%25E3%2582%25B0%25E3%2582%25B3%25E3%2583%259F%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2582%25B9%25E3%2583%259A%25E3%2582%25B7%25E3%2583%25A3%25E3%2583%25AB-%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BB%25EF%25BC%25A6%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584-ebook%2Fdp%2FB0C13WPVY4%3Fref_%3Dsaga_dp_ss_dsk_dp", image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg", star: 4 },
-            { name: "SF短編コンプリート・ワークス 8 流血鬼", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2F%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BBF%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584SF%25E7%259F%25AD%25E7%25B7%25A8%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2597%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%2588%25E3%2583%25BB%25E3%2583%25AF%25E3%2583%25BC%25E3%2582%25AF%25E3%2582%25B9-8-%25E6%25B5%2581%25E8%25A1%2580%25E9%25AC%25BC-%25E3%2583%2593%25E3%2583%2583%25E3%2582%25B0%25E3%2582%25B3%25E3%2583%259F%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2582%25B9%25E3%2583%259A%25E3%2582%25B7%25E3%2583%25A3%25E3%2583%25AB-%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BB%25EF%25BC%25A6%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584-ebook%2Fdp%2FB0C13VXGY2%3Fref_%3Dsaga_dp_ss_dsk_dp", image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg", star: 4, comment: "吸血鬼テーマの傑作。価値観が揺さぶられます。" },
-            { name: "SF短編コンプリート・ワークス 9 宇宙船製造法", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2F%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BBF%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584SF%25E7%259F%25AD%25E7%25B7%25A8%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2597%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%2588%25E3%2583%25BB%25E3%2583%25AF%25E3%2583%25BC%25E3%2582%25AF%25E3%2582%25B9-9-%25E5%25AE%2587%25E5%25AE%2599%25E8%2588%25B9%25E8%25A3%25BD%25E9%2580%25A0%25E6%25B3%2595-%25E3%2583%2593%25E3%2583%2583%25E3%2582%25B0%25E3%2582%25B3%25E3%2583%259F%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2582%25B9%25E3%2583%259A%25E3%2582%25B7%25E3%2583%25A3%25E3%2583%25AB-%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BB%25EF%25BC%25A6%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584-ebook%2Fdp%2FB0C13VG3CQ%3Fref_%3Dsaga_dp_ss_dsk_dp", image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg", star: 5, comment: "50年前にAIを先取りしていた⁉︎" },
-            { name: "SF短編コンプリート・ワークス 10 征地球論", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2F%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BBF%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584SF%25E7%259F%25AD%25E7%25B7%25A8%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2597%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%2588%25E3%2583%25BB%25E3%2583%25AF%25E3%2583%25BC%25E3%2582%25AF%25E3%2582%25B9-10-%25E5%25BE%2581%25E5%259C%25B0%25E7%2590%2583%25E8%25AB%2596-%25E3%2583%2593%25E3%2583%2583%25E3%2582%25B0%25E3%2582%25B3%25E3%2583%259F%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2582%25B9%25E3%2583%259A%25E3%2582%25B7%25E3%2583%25A3%25E3%2583%25AB-%25E8%2597%25A4%25E5%25AD%2590%25E3%2583%25BB%25EF%25BC%25A6%25E3%2583%25BB%25E4%25B8%258D%25E4%25BA%258C%25E9%259B%2584-ebook%2Fdp%2FB0C13W74YH%3Fref_%3Dsaga_dp_ss_dsk_dp", image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg", star: 4 },
-            { name: "SF短編コンプリート・ワークス", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4062&url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2FB0C4YRVRN3%3Fbinding%3Dkindle_edition%26ref_%3Dsaga_dp_ss_dsk_sdp", image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png", star: 5, ribbon: "完結セット" }
+            { name: "SF短編コンプリート・ワークス 1 ミノタウロスの皿", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/61rVKrujtoL._SL1500_.jpg", star: 5, comment: "最初の一冊は絶対にコレ！", ribbon: "イチオシ" },
+            { name: "SF短編コンプリート・ワークス 2 ノスタル爺", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/61Rp53DMBLL._SL1500_.jpg", star: 4, comment: "ホラー好きにオススメ！" },
+            { name: "SF短編コンプリート・ワークス 3 カンビュセスの籤", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/61i4dLiHFYL._SL1500_.jpg", star: 3 },
+            { name: "SF短編コンプリート・ワークス 4 パラレル同窓会", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/710749dqI4L._SL1500_.jpg", star: 3 },
+            { name: "SF短編コンプリート・ワークス 5 夢カメラ", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/61d3C7gflgL._SL1500_.jpg", star: 4, comment: "衝撃的なラスト「ある日...」収録" },
+            { name: "SF短編コンプリート・ワークス 6 異人アンドロ氏", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/61MK4cimZgL._SL1500_.jpg", star: 5 },
+            { name: "SF短編コンプリート・ワークス 7 ポストの中の明日", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/71Ut0NRETUL._SY522_.jpg", star: 4 },
+            { name: "SF短編コンプリート・ワークス 8 流血鬼", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/61uMJEBwvyL._SL1500_.jpg", star: 4, comment: "吸血鬼テーマの傑作。価値観が揺さぶられます。" },
+            { name: "SF短編コンプリート・ワークス 9 宇宙船製造法", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/71IoryeqdzL._SL1500_.jpg", star: 5, comment: "50年前にAIを先取りしていた⁉︎" },
+            { name: "SF短編コンプリート・ワークス 10 征地球論", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/6155wSjK7lL._SL1500_.jpg", star: 4 },
+            { name: "SF短編コンプリート・ワークス", url: "https://af.moshimo.com/af/c/click?a_id=5376181&p_id=170&pc_id=185&pl_id=4065", image: "https://m.media-amazon.com/images/I/A1NCHpKHjML._SY300_.png", star: 5, ribbon: "完結セット" }
         ];
 
         const container = document.getElementById('links-container');
