@@ -15,18 +15,17 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
 <style>
 
-/* --- YouTube ショート動画用（縦長） --- */
-.shorts-container {
+/* --- YouTube埋め込み用 --- */
+.youtube-container {
   position: relative;
   width: 100%;
-  max-width: 350px; /* パソコンで見た時に大きくなりすぎないように制限 */
-  margin: 30px auto; /* 中央揃え */
-  aspect-ratio: 9 / 16; /* 縦長のアスペクト比 */
+  padding-top: 56.25%; /* 16:9のアスペクト比 */
+  margin: 30px 0;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.shorts-container iframe {
+.youtube-container iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -34,12 +33,7 @@
   height: 100%;
   border: none;
 }
-/* aspect-ratio未対応の古いブラウザ用 */
-@supports not (aspect-ratio: 9 / 16) {
-  .shorts-container {
-    padding-top: 177.77%;
-  }
-}
+  
 :root {
 --primary-color: #0096D6;
 --bg-color: #F4F8FA;
