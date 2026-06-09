@@ -15,23 +15,30 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
 <style>
 
-/* --- YouTube埋め込み用 --- */
-.youtube-container {
+/* --- YouTube ショート動画用（縦長） --- */
+.shorts-container {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9のアスペクト比 */
-  margin: 30px 0;
+  max-width: 350px; /* パソコンで見た時に大きくなりすぎないように制限 */
+  margin: 30px auto; /* 中央揃え */
+  aspect-ratio: 9 / 16; /* 縦長のアスペクト比 */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.youtube-container iframe {
+.shorts-container iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   border: none;
+}
+/* aspect-ratio未対応の古いブラウザ用 */
+@supports not (aspect-ratio: 9 / 16) {
+  .shorts-container {
+    padding-top: 177.77%;
+  }
 }
 :root {
 --primary-color: #0096D6;
@@ -126,7 +133,7 @@ box-shadow: none;
 <p>家族に愛され、心穏やかに天国へ旅立つためにはどう生きるべきか。そんな深い問いを私たちに投げかけてくれる、非常に考えさせられる一作です。</p>
 
 <div class="youtube-container">
-  <iframe width="560" height="315" src="https://youtube.com/shorts/Eea0iuJfpZw?si=yMIVPa2j7bO2JhP3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://youtube.com/embed/Eea0iuJfpZw?si=yMIVPa2j7bO2JhP3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
   
 <h2>まとめ</h2>
